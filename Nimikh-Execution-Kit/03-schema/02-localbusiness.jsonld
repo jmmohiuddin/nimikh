@@ -1,0 +1,41 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://nimikh.com/#local",
+  "name": "Nimikh Production Delivery Hub",
+  "parentOrganization": { "@id": "https://nimikh.com/#org" },
+  "image": "https://nimikh.com/assets/dhaka-hq.jpg",
+  "description": "Nimikh's Dhaka delivery hub — engineering, design, and growth operations serving global startups and enterprises.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Road 1, Building No 30, Dhaka Uddan, Mohammadpur",
+    "addressLocality": "Dhaka",
+    "addressRegion": "Dhaka Division",
+    "postalCode": "1207",
+    "addressCountry": "BD"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 23.7638,
+    "longitude": 90.3597
+  },
+  "telephone": "+8801335857104",
+  "email": "hey@nimikh.com",
+  "url": "https://nimikh.com/",
+  "priceRange": "Negotiable, outcome-linked",
+  "currenciesAccepted": "USD, BDT",
+  "paymentAccepted": "Wire Transfer, Corporate Cheque, Stripe",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/133436546/"
+  ]
+}
+</script>

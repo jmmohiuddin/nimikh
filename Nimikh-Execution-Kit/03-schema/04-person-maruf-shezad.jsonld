@@ -1,0 +1,25 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://nimikh.com/team/maruf-shezad/#person",
+  "name": "Maruf Shezad",
+  "givenName": "Maruf",
+  "familyName": "Shezad",
+  "jobTitle": "Founder & Chief Experience Officer",
+  "worksFor": { "@id": "https://nimikh.com/#org" },
+  "url": "https://nimikh.com/team/maruf-shezad/",
+  "image": "https://nimikh.com/assets/team/maruf-shezad.jpg",
+  "description": "Founder and CXO of Nimikh. Expert in user experience strategy, premium typography systems, behavioral-economic interface architecture, and brand alignment engineering.",
+  "knowsAbout": [
+    "User Experience Strategy",
+    "Design Systems",
+    "Design Tokens",
+    "Premium Typography Systems",
+    "Behavioral-Economic Interface Design",
+    "Figma Component Architecture",
+    "Brand Alignment Engineering"
+  ],
+  "sameAs": []
+}
+</script>

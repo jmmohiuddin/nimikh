@@ -1,0 +1,56 @@
+Tier,Platform,Category,Priority,Status,Submitted Date,Live URL,Login Email,Notes,Allows Reviews,Allows Backlink
+1,Google Business Profile,Local & Maps,P0,Not started,,,,Requires postcard or phone verification to Dhaka address. Categories: Software Company + Web Design Company + Marketing Consultant.,Yes,Yes (nofollow)
+1,Bing Places for Business,Local & Maps,P0,Not started,,,,Import from GBP after GBP is live.,Yes,Yes
+1,LinkedIn Company Page,Professional,P0,Live (needs completion),,https://www.linkedin.com/company/133436546/,,"Add tagline, About (100-word), Specialties (from Golden Record categories), Industry, Founded, Website, Locations, Cover image.",Products/Reviews,Yes
+1,Clutch.co,B2B Services,P0,Not started,,,,"Create profile with 3-5 project entries and request verified reviews from pilot clients. Categories: Custom Software Dev, Web Dev, Mobile Dev, AI Dev, UI/UX.",Verified reviews,Yes
+1,GoodFirms,B2B Services,P0,Not started,,,,Same category set as Clutch.,Yes,Yes
+1,DesignRush,B2B Services,P1,Not started,,,,Multi-list under SaaS Dev + Mobile Dev + AI Dev sub-categories.,Yes,Yes
+1,G2 (Services),Software/Services,P0,Not started,,,,Requires client-sourced reviews. Start post-case-study #1.,Yes,Yes
+1,BASIS,Trade association,P0,Blocked,,,,Depends on RJSC incorporation completion. HIGH priority once unblocked.,Directory,Yes
+1,Crunchbase,Company database,P0,Not started,,,,Founder-submitted. Include founders, categories, HQ, funding stage.,No,Yes
+1,Wikidata,Structured data,P0,Not started,,,,Requires 2+ third-party citations before submission is accepted. Submit after BASIS + Crunchbase + Clutch are live.,No,N/A
+2,Product Hunt,Launch platform,P2,Not started,,,,Launch when SaaS spin-off or shipped tool is ready.,Yes,Yes
+2,BetaList,Pre-launch,P3,Not started,,,,For SaaS spin-off.,No,Yes
+2,BuiltIn,Tech directory,P1,Not started,,,,US city listing. Add once US entity is registered.,Yes,Yes
+2,The Manifest,B2B Services,P1,Not started,,,,Sister to Clutch; low effort once Clutch is live.,Yes,Yes
+2,Sortlist,B2B Services,P1,Not started,,,,EU-strong. Priority for UK/EU clients.,Yes,Yes
+2,TopDevelopers.co,Developer directory,P2,Not started,,,,,Yes,Yes
+2,ITFirms,Developer directory,P2,Not started,,,,,Yes,Yes
+2,AppFutura,Mobile directory,P2,Not started,,,,Mobile-app-focused.,Yes,Yes
+2,YourStory,Regional press,P2,Not started,,,,South Asia startup credibility.,No,Yes
+2,e27,APAC startup,P2,Not started,,,,SEA credibility.,No,Yes
+2,f6s.com,Startup network,P2,Not started,,,,Founder network.,No,Yes
+2,StartupBlink,Ecosystem,P3,Not started,,,,,No,Yes
+2,SaaSHub,Software directory,P3,Not started,,,,For SaaS spin-off.,Yes,Yes
+2,AlternativeTo,Software directory,P3,Not started,,,,For SaaS spin-off.,Yes,Yes
+3,GitHub (org),Developer,P0,Not started,,,,Create nimikh org. Publish design-tokens repo + JSON-LD generator repo as citation magnets.,No,Yes (bio)
+3,Dev.to (org),Publishing,P0,Not started,,,,Founder-authored technical posts + team blog.,No,Yes
+3,Hashnode (team),Publishing,P1,Not started,,,,Same content strategy as Dev.to; SEO-strong.,No,Yes
+3,Stack Overflow (company + team profiles),Developer,P1,Not started,,,,Engineer authority + team page.,No,Yes (bio)
+3,Behance,Design portfolio,P1,Not started,,,,Team account. Maruf-led.,No,Yes
+3,Dribbble Team,Design portfolio,P1,Not started,,,,Maruf-led.,No,Yes
+3,Awwwards,Award,P2,Not started,,,,Submit nimikh.com when redesign is live.,No,Yes
+3,SiteInspire,Award,P2,Not started,,,,,No,Yes
+3,CSSDesignAwards,Award,P2,Not started,,,,,No,Yes
+3,Codrops,Design engineering,P2,Not started,,,,Team article submission.,No,Yes
+3,CodePen (team),Design engineering,P2,Not started,,,,Public pen library.,No,Yes
+3,Layers Slack community,Community,P2,Not started,,,,Founder participation. Not spam.,No,No
+3,Friends of Figma,Community,P2,Not started,,,,Maruf-led community presence.,No,No
+4,G2 (product),Reviews,P2,Not started,,,,For SaaS spin-off.,Yes,Yes
+4,Capterra,Reviews,P2,Not started,,,,For SaaS spin-off.,Yes,Yes
+4,GetApp,Reviews,P2,Not started,,,,For SaaS spin-off.,Yes,Yes
+4,SoftwareAdvice,Reviews,P2,Not started,,,,For SaaS spin-off.,Yes,Yes
+4,TrustRadius,Reviews,P2,Not started,,,,B2B reviews.,Yes,Yes
+4,Trustpilot,Reviews,P2,Not started,,,,General reviews.,Yes,Yes
+4,Featured Customers,Case studies,P3,Not started,,,,Paid but effective.,Yes,Yes
+4,UpCity,Local + B2B,P3,Not started,,,,,Yes,Yes
+5,Finovate (FinTech),Vertical,P3,Not started,,,,For FinTech clients.,No,Yes
+5,FinTech Global,Vertical,P3,Not started,,,,,No,Yes
+5,HealthTech Alpha,Vertical,P3,Not started,,,,,No,Yes
+5,HIMSS Vendor,Vertical,P3,Not started,,,,,No,Yes
+5,SupplyChainBrain,Vertical,P3,Not started,,,,,No,Yes
+5,BCS (Bangladesh Computer Society),Regional,P2,Not started,,,,Post-BASIS.,No,Yes
+5,ICT Division Vendor Roll,Regional,P2,Not started,,,,Post-BASIS + BIN.,No,Yes
+5,Startup Bangladesh (iDEA),Regional,P2,Not started,,,,Post-incorporation.,No,Yes
+5,techUK,Regional,P3,Not started,,,,UK expansion.,No,Yes
+5,French Tech,Regional,P3,Not started,,,,For French clients.,No,Yes

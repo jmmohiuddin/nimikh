@@ -1,0 +1,33 @@
+<!-- Article template — inject on every /insights/ and /case-studies/ page. Replace bracketed values. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://nimikh.com/insights/[slug]/#article",
+  "mainEntityOfPage": "https://nimikh.com/insights/[slug]/",
+  "headline": "[Article Title — max 110 characters]",
+  "description": "[40–60 word summary paragraph — this is the extractable snippet for AI answers]",
+  "image": [
+    "https://nimikh.com/assets/insights/[slug]/hero-1200x630.jpg"
+  ],
+  "author": {
+    "@id": "https://nimikh.com/team/mohiuddin/#person"
+  },
+  "publisher": {
+    "@id": "https://nimikh.com/#org"
+  },
+  "datePublished": "2026-07-15",
+  "dateModified": "2026-07-15",
+  "articleSection": "[Cluster: Headless Commerce | SaaS Engineering | AI & Automation | Mobile | Design Systems | Compliance]",
+  "keywords": ["[keyword 1]", "[keyword 2]", "[keyword 3]"],
+  "about": [
+    { "@id": "https://nimikh.com/services/[related-service]/#service" }
+  ],
+  "mentions": [
+    { "@type": "Thing", "name": "[technology, standard, or entity mentioned]" }
+  ],
+  "inLanguage": "en"
+}
+</script>
+
+<!-- Case Study variant: use @type: "Article" with additionalType: "https://schema.org/CaseStudy" and add QuantitativeValue for verified metrics. -->

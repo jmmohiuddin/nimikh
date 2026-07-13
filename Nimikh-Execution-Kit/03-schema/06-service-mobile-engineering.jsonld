@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://nimikh.com/services/mobile-app-engineering/#service",
+  "name": "Mobile Application Engineering",
+  "serviceType": "Cross-platform and Native Mobile Development",
+  "provider": { "@id": "https://nimikh.com/#org" },
+  "description": "High-performance cross-platform and native mobile applications leveraging secure runtime engines to establish direct user transaction paths across iOS and Android.",
+  "url": "https://nimikh.com/services/mobile-app-engineering/",
+  "areaServed": ["US", "GB", "EU", "BD", "SG"],
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Consumer brands, logistics ventures, and financial networks"
+  },
+  "category": ["Mobile App Development", "Flutter", "Swift", "Kotlin"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Mobile Engineering Process",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Flow Architecture Wireframing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cross-Platform Runtime Configuration" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Native Device API Integrations" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Closed Beta Deployment" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "App Store Compliance Launch" } }
+    ]
+  }
+}
+</script>

@@ -1,0 +1,49 @@
+<!-- FAQPage template — one per pillar/service page. Replace question/answer pairs. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does Nimikh guarantee code layout matching across deep enterprise SaaS developments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build comprehensive interactive Design Token scales inside unified Figma token systems mapped directly to Tailwind CSS variables in our development repositories. Continuous visual integration test sheets run through Chromatic on Storybook to eliminate layout shifting anomalies before server deployment tracks are authorized."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What technical strategy minimizes system execution delays inside applied AI agent pipelines?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our AI agent structures implement optimized Python micro-routing architectures using decoupled asynchronous function handlers, local vector database caching, and clear model prompt guardrails. This architecture achieves verified backend lookup run completion thresholds under 1.5 seconds while strictly controlling external API token overruns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the dual-entity operational framework protect cross-border client product launches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By routing international client contracting and payments workflows through secure parent enterprise infrastructures in primary global financial centers, Nimikh removes local regulatory outward remittance transaction processing lags. This financial architecture ensures continuous, uninterrupted tool subscription scaling across core global cloud networks like AWS and GitHub."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you prevent multi-tenant cross-contamination in SaaS builds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our systems use explicit SQL schemas with PostgreSQL Row-Level Security rules and isolated workspace identifiers to prevent unauthorized cross-boundary lookups. Every tenant query is scoped to the authenticated workspace identifier at the database policy layer, not just the application layer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Nimikh protect sensitive data when passing payloads to AI models?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We structure advanced data protection filtering layers that anonymize personal data tokens locally before routing requests to external model nodes. For regulated tenants, inference runs on sovereign infrastructure with encrypted vector stores and full audit logging."
+      }
+    }
+  ]
+}
+</script>

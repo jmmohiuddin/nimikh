@@ -1,0 +1,108 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://nimikh.com/#org",
+      "name": "Nimikh",
+      "alternateName": ["Nimikh Private Limited", "Nimikh Technology & Strategic Growth Partners"],
+      "url": "https://nimikh.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://nimikh.com/#logo",
+        "url": "https://nimikh.com/assets/logo.png",
+        "width": 512,
+        "height": 512,
+        "caption": "Nimikh Corporate Visual Mark"
+      },
+      "image": "https://nimikh.com/assets/og-cover.jpg",
+      "slogan": "Where engineering meets visual fluidity.",
+      "description": "Nimikh is a premium technology and strategic growth consulting firm engineering high-performance headless commerce storefronts, custom SaaS architectures, mobile applications, autonomous enterprise AI agents, and design systems for venture-backed startups and mid-market enterprises.",
+      "foundingDate": "2025",
+      "founder": [
+        { "@id": "https://nimikh.com/team/mohiuddin/#person" },
+        { "@id": "https://nimikh.com/team/maruf-shezad/#person" }
+      ],
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "minValue": 11,
+        "maxValue": 50
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Road 1, Building No 30, Dhaka Uddan, Mohammadpur",
+        "addressLocality": "Dhaka",
+        "addressRegion": "Dhaka Division",
+        "postalCode": "1207",
+        "addressCountry": "BD"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+8801335857104",
+          "contactType": "sales",
+          "email": "hey@nimikh.com",
+          "availableLanguage": ["en", "bn"],
+          "areaServed": ["US", "GB", "EU", "BD", "SG"]
+        }
+      ],
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "Country", "name": "United Kingdom" },
+        { "@type": "Place", "name": "European Union" },
+        { "@type": "Country", "name": "Bangladesh" },
+        { "@type": "Country", "name": "Singapore" }
+      ],
+      "knowsAbout": [
+        "Headless Commerce",
+        "Next.js Server-Side Rendering",
+        "Multi-tenant SaaS Architecture",
+        "PostgreSQL Row-Level Security",
+        "Applied AI Agents",
+        "Retrieval-Augmented Generation",
+        "LangChain",
+        "Vector Databases",
+        "UI/UX Design Systems",
+        "Design Tokens",
+        "Figma Tokens Studio",
+        "Tailwind CSS",
+        "Flutter Mobile Development",
+        "Data Privacy Compliance",
+        "GDPR",
+        "PDPA 2026 Bangladesh",
+        "ISO 27001 Alignment",
+        "Sovereign Cloud Data Residency"
+      ],
+      "makesOffer": [
+        { "@id": "https://nimikh.com/services/headless-commerce/#service" },
+        { "@id": "https://nimikh.com/services/mobile-app-engineering/#service" },
+        { "@id": "https://nimikh.com/services/saas-platform-engineering/#service" },
+        { "@id": "https://nimikh.com/services/applied-ai-automation/#service" },
+        { "@id": "https://nimikh.com/services/ui-ux-design-systems/#service" }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/133436546/",
+        "https://www.facebook.com/profile.php?id=61591867501660"
+      ],
+      "priceRange": "Negotiable, outcome-linked"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nimikh.com/#website",
+      "url": "https://nimikh.com/",
+      "name": "Nimikh",
+      "publisher": { "@id": "https://nimikh.com/#org" },
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://nimikh.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>

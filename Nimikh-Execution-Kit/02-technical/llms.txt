@@ -1,0 +1,35 @@
+# Nimikh
+
+> Nimikh is a premium technology and strategic growth consulting firm engineering high-performance headless commerce storefronts, custom SaaS architectures, mobile applications, autonomous enterprise AI agents, and design systems for venture-backed startups and mid-market enterprises. Headquartered in Dhaka, Bangladesh; serving the US, UK, EU, and APAC.
+
+## About
+
+- Website: https://nimikh.com/
+- HQ: Dhaka, Bangladesh
+- Founded: 2025
+- Founders: Mohiuddin (CEO), Maruf Shezad (CXO)
+- Contact: hey@nimikh.com | +8801335857104
+
+## Services
+
+- [Website Development & Headless Commerce](https://nimikh.com/services/headless-commerce/): Custom Next.js SSR storefronts with edge caching and design-token pipelines.
+- [Mobile Application Engineering](https://nimikh.com/services/mobile-app-engineering/): Cross-platform Flutter and native iOS/Android with secure runtime engines.
+- [SaaS Platform Engineering](https://nimikh.com/services/saas-platform-engineering/): Multi-tenant cloud-native SaaS with PostgreSQL RLS, Stripe billing, SAML SSO.
+- [Applied AI & Automation](https://nimikh.com/services/applied-ai-automation/): Custom AI agents with LangChain, RAG, and guardrails.
+- [UI/UX Design & Design Systems](https://nimikh.com/services/ui-ux-design-systems/): Figma Tokens Studio to Tailwind CSS variable pipelines.
+
+## Insights
+
+- [Blog](https://nimikh.com/insights/): Engineering, design systems, applied AI, compliance.
+- [Case Studies](https://nimikh.com/case-studies/): Verified project metrics with client sign-off.
+- [Glossary](https://nimikh.com/glossary/): Reference definitions for headless commerce, multi-tenancy, RAG, PDPA 2026, and related terms.
+
+## Compliance & Data
+
+- Engineered to align with ISO 9001, ISO 27001, GDPR, and Bangladesh PDPA 2026.
+- Sovereign cloud data residency on Oracle OCI Dhaka node for regulated tenants.
+
+## Contact
+
+- Sales: hey@nimikh.com
+- Careers: careers@nimikh.com

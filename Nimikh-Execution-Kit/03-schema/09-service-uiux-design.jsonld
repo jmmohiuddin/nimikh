@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://nimikh.com/services/ui-ux-design-systems/#service",
+  "name": "UI/UX Design & Component Design Systems",
+  "serviceType": "Product Design and Component Design Systems",
+  "provider": { "@id": "https://nimikh.com/#org" },
+  "description": "Cognitive-science-led digital user experience strategy and structural layout engineering mapped directly to code token formats via Figma Tokens Studio and Tailwind CSS variables.",
+  "url": "https://nimikh.com/services/ui-ux-design-systems/",
+  "areaServed": ["US", "GB", "EU", "BD", "SG"],
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Software development teams unifying code styling and legacy applications overhauling UX"
+  },
+  "category": ["UI/UX Design", "Design Systems", "Figma", "Design Tokens"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Design Systems Process",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "User Research and Spatial Auditing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cognitive Journey Mapping" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI Component Grid Construction" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "High-Fidelity Prototype Interaction" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automated Variable Handoff to Code" } }
+    ]
+  }
+}
+</script>

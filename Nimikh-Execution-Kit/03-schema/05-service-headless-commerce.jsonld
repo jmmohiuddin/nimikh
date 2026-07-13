@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://nimikh.com/services/headless-commerce/#service",
+  "name": "Website Development & Headless Commerce",
+  "serviceType": "Custom Headless Commerce Engineering",
+  "provider": { "@id": "https://nimikh.com/#org" },
+  "description": "Custom architecture of headless, decoupled web applications and storefronts engineered for page performance, zero visual decay, and clean crawlability.",
+  "url": "https://nimikh.com/services/headless-commerce/",
+  "areaServed": ["US", "GB", "EU", "BD", "SG"],
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Growth-stage e-commerce merchants, enterprise brands, D2C startups"
+  },
+  "category": ["Web Development", "Headless Commerce", "Next.js Engineering"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Headless Commerce Engineering Process",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Discovery & System Architecture" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Database & API Schema Mapping" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Frontend UI Variable Sync" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Unit and Visual QA Checking" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Zero-Downtime Staging Launch" } }
+    ]
+  }
+}
+</script>

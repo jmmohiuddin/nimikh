@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://nimikh.com/services/applied-ai-automation/#service",
+  "name": "Applied AI & Autonomous Automation Solutions",
+  "serviceType": "Enterprise AI Agent Engineering and RPA Automation",
+  "provider": { "@id": "https://nimikh.com/#org" },
+  "description": "Custom-trained enterprise AI agents, data pipelines, and cognitive models built to process unstructured business data with guardrails, vector retrieval, and secure PII handling.",
+  "url": "https://nimikh.com/services/applied-ai-automation/",
+  "areaServed": ["US", "GB", "EU", "BD", "SG"],
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Insurance agencies, legal firms, customer operations divisions, and logistics operators"
+  },
+  "category": ["AI Development", "RAG Systems", "LangChain", "Workflow Automation"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI & Automation Process",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manual Operational Process Diagnostic" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Solution Context Architecture" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Prompt Tuning and Guardrail Design" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "System API and CRM Integration" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Security Log Monitoring" } }
+    ]
+  }
+}
+</script>

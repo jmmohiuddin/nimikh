@@ -1,0 +1,30 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://nimikh.com/team/mohiuddin/#person",
+  "name": "Mohiuddin",
+  "givenName": "Mohiuddin",
+  "jobTitle": "Founder & Chief Executive Officer",
+  "worksFor": { "@id": "https://nimikh.com/#org" },
+  "url": "https://nimikh.com/team/mohiuddin/",
+  "image": "https://nimikh.com/assets/team/mohiuddin.jpg",
+  "description": "Founder and CEO of Nimikh. Full-stack engineer specializing in the MERN stack, data analytics, agile product lifecycle management, and tech venture operations. Studying Data Science and Artificial Intelligence at IIT Guwahati.",
+  "knowsAbout": [
+    "Full-Stack Engineering",
+    "MERN Stack Applications",
+    "Data Analytics",
+    "Agile Product Lifecycle Management",
+    "Applied AI",
+    "Tech Venture Operations",
+    "Digital Growth Strategy"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Indian Institute of Technology Guwahati"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/jm-mohiuddin/"
+  ]
+}
+</script>

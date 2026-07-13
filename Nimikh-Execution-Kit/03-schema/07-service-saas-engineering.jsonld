@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://nimikh.com/services/saas-platform-engineering/#service",
+  "name": "Software-as-a-Service (SaaS) Platform Engineering",
+  "serviceType": "Multi-tenant Cloud-Native SaaS Engineering",
+  "provider": { "@id": "https://nimikh.com/#org" },
+  "description": "Deep engineering of multi-tenant cloud-native SaaS systems designed for strict database isolation, automated billing cycles, and secure workspace routing.",
+  "url": "https://nimikh.com/services/saas-platform-engineering/",
+  "areaServed": ["US", "GB", "EU", "BD", "SG"],
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "B2B software companies, enterprise platforms standardizing data layers, and startup founders"
+  },
+  "category": ["SaaS Development", "Multi-tenant Architecture", "PostgreSQL RLS", "Kubernetes"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "SaaS Engineering Process",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Multi-Tenant Relational Database Design" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Core Security Framework Setup" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stripe Invoice System Integration" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "User Workspace Panel Configuration" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Penetration and Load Testing" } }
+    ]
+  }
+}
+</script>

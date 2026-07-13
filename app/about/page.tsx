@@ -16,10 +16,12 @@ const values = [
   { icon: '⚡', title: 'Move fast', body: "We don't believe in slow agencies. Quality and speed together." },
 ];
 
-const team = [
+const team: Array<{
+  name: string; role: string; initial: string; bg: string; bio: string; chips: string[]; href?: string;
+}> = [
   { name: 'Mohiuddin', role: 'Founder & CEO', initial: 'M', bg: 'linear-gradient(135deg,#5e6ad2,#7c3aed)',
     bio: 'Visionary behind Nimikh. Passionate about connecting local creative talent with businesses that need them.',
-    chips: ['Strategy', 'Business Dev'] },
+    chips: ['Strategy', 'Business Dev'], href: '/founders/mohiuddin' },
   { name: 'Tech Lead', role: 'Head of Engineering', initial: 'T', bg: 'linear-gradient(135deg,#0ea5e9,#5e6ad2)',
     bio: 'Full-stack architect with 7 years of experience building scalable web products for startups and enterprises.',
     chips: ['Next.js', 'Node.js', 'AWS'] },
@@ -143,6 +145,9 @@ export default function AboutPage() {
                 <div className="chip-group mt-16" style={{ justifyContent: 'center' }}>
                   {m.chips.map((c) => <span key={c} className="chip">{c}</span>)}
                 </div>
+                {m.href ? (
+                  <Link href={m.href} className="btn btn-ghost btn-sm mt-16">View profile →</Link>
+                ) : null}
               </div>
             ))}
           </div>

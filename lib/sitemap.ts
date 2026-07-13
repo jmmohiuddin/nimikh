@@ -1,5 +1,5 @@
 import type { SitemapEntry } from './pages';
-import { pageEntries, serviceEntries, caseStudyEntries } from './pages';
+import { pageEntries, serviceEntries, caseStudyEntries, founderEntries } from './pages';
 import { absoluteUrl } from './site';
 
 /**
@@ -15,6 +15,7 @@ export const SITEMAP_BUCKETS = {
   pages: pageEntries,
   services: serviceEntries,
   'case-studies': caseStudyEntries,
+  founders: founderEntries,
 } satisfies Record<string, SitemapEntry[]>;
 
 export type SitemapId = keyof typeof SITEMAP_BUCKETS;

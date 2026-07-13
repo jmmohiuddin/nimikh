@@ -25,6 +25,10 @@ export function organization(): JsonLdNode {
     description: site.description,
     email: site.contactEmail,
     slogan: site.tagline,
+    // `sameAs` links the brand to its social profiles for Google's
+    // knowledge panel. Omitted entirely when no profiles are configured —
+    // an empty array is noise, and a fake URL is worse.
+    ...(site.socials.length > 0 ? { sameAs: site.socials } : {}),
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Dhaka',
@@ -95,6 +99,43 @@ export function faqPage(items: FaqItem[], pageUrl: string): JsonLdNode {
       name: i.question,
       acceptedAnswer: { '@type': 'Answer', text: i.answer },
     })),
+  };
+}
+
+export type Crumb = { name: string; url: string };
+
+export function breadcrumbList(crumbs: Crumb[]): JsonLdNode {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      item: c.url,
+    })),
+  };
+}
+
+export type PersonInput = {
+  name: string;
+  slug: string;
+  jobTitle: string;
+  bio: string;
+  knowsAbout: string[];
+  sameAs: string[];
+};
+
+export function person(p: PersonInput): JsonLdNode {
+  return {
+    '@type': 'Person',
+    '@id': `${absoluteUrl(`/founders/${p.slug}`)}#person`,
+    name: p.name,
+    url: absoluteUrl(`/founders/${p.slug}`),
+    jobTitle: p.jobTitle,
+    description: p.bio,
+    worksFor: { '@id': ORG_ID },
+    knowsAbout: p.knowsAbout,
+    ...(p.sameAs.length > 0 ? { sameAs: p.sameAs } : {}),
   };
 }
 

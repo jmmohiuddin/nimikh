@@ -4,6 +4,7 @@
  * App Router route in this repo. Adding a new page? Add it here or
  * sitemap emissions and internal-link audits will miss it.
  */
+import { founders } from './founders';
 
 export type SitemapEntry = {
   path: string;
@@ -38,3 +39,13 @@ export const serviceEntries: SitemapEntry[] = [
 export const caseStudyEntries: SitemapEntry[] = [
   { path: '/case-studies', priority: 0.7, changeFrequency: 'weekly' },
 ];
+
+/**
+ * Founder profiles. Derived from lib/founders.ts at build time so a new
+ * founder shows up in the sitemap without a second edit here.
+ */
+export const founderEntries: SitemapEntry[] = founders.map((f) => ({
+  path: `/founders/${f.slug}`,
+  priority: 0.6,
+  changeFrequency: 'monthly',
+}));

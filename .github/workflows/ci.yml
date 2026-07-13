@@ -36,6 +36,11 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: '1'
 
+      - name: SEO indexability audit
+        run: npm run audit:seo
+        env:
+          NEXT_TELEMETRY_DISABLED: '1'
+
   lighthouse:
     name: Lighthouse budget (NIM-045)
     runs-on: ubuntu-latest

@@ -14,6 +14,22 @@ export const site = {
     'https://nimikh.tech',
   locale: 'en-BD',
   contactEmail: 'hello@nimikh.com',
+  /**
+   * Public social/profile URLs. These become schema.org `sameAs` on the
+   * Organization node, which is how Google associates the brand with its
+   * profiles for a knowledge panel. Add real URLs as they go live — leave
+   * empty rather than pointing at placeholders (a bad sameAs hurts trust).
+   */
+  socials: [] as string[],
+  /**
+   * Search-engine ownership verification tokens. Paste the value Google
+   * Search Console / Bing Webmaster gives you (env var so it isn't in the
+   * repo). Consumed by app/layout.tsx metadata.verification.
+   */
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION ?? '',
+    bing: process.env.BING_SITE_VERIFICATION ?? '',
+  },
   /** Nav order matches the pre-Next.js static site 1:1. */
   nav: [
     { href: '/about', label: 'About' },

@@ -1,0 +1,68 @@
+[
+  {
+    "source": "/index.html",
+    "destination": "/",
+    "permanent": true,
+    "note": "Legacy static-site URL from the pre-Next.js build."
+  },
+  {
+    "source": "/about.html",
+    "destination": "/about",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/services.html",
+    "destination": "/services",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/services/software.html",
+    "destination": "/services/software",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/services/marketing.html",
+    "destination": "/services/marketing",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/services/creative.html",
+    "destination": "/services/creative",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/marketplace.html",
+    "destination": "/marketplace",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/pricing.html",
+    "destination": "/pricing",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/case-studies.html",
+    "destination": "/case-studies",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/contact.html",
+    "destination": "/contact",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  },
+  {
+    "source": "/faq.html",
+    "destination": "/faq",
+    "permanent": true,
+    "note": "Legacy static-site URL."
+  }
+]

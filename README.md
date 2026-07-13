@@ -4,11 +4,15 @@ Digital growth agency website — software development, growth marketing, and a 
 
 🌐 **Live:** [nimikh.tech](https://nimikh.tech) · [nimikh.vercel.app](https://nimikh.vercel.app)
 
-## Overview
+## Stack
 
-A fast, fully-responsive static website with a dark, developer-focused design system inspired by Stripe, Vercel, and Linear.
+- [Next.js 15](https://nextjs.org) App Router · React 19 · TypeScript (strict)
+- Tailwind CSS wired to CSS-variable design tokens (`app/globals.css`)
+- Server components by default; client components only where interactivity requires it (`app/(shared)/`)
+- Zod-validated redirect map (`redirects.json`), edge middleware with security headers, split sitemaps, LLM-crawler-friendly `robots.txt`
+- GitHub Actions CI: typecheck → lint → build → Lighthouse budget
 
-## Pages
+## Routes
 
 | Route | Description |
 |-------|-------------|
@@ -23,22 +27,27 @@ A fast, fully-responsive static website with a dark, developer-focused design sy
 | `/case-studies` | Client case studies with metrics |
 | `/contact` | Contact form with inquiry routing |
 | `/faq` | Categorized FAQ |
+| `/legal/*` | Privacy, terms, security, entity, compliance |
 
-## Tech
+Machine-readable surfaces: `/robots.txt`, `/sitemap.xml` (+ split sitemaps), `/llms.txt`, `/api/knowledge`, `/.well-known/security.txt`.
 
-- Plain HTML, CSS, and vanilla JavaScript — no build step
-- Design tokens as CSS custom properties (`css/styles.css`)
-- Scroll animations, accordions, filters, and counters (`js/main.js`)
-- Deployed on [Vercel](https://vercel.com) with clean URLs (`vercel.json`)
-
-## Local development
-
-Serve over HTTP (CSS/fonts don't load correctly from `file://`):
+## Development
 
 ```bash
-python3 -m http.server 3456
-# then open http://localhost:3456
+npm install
+npm run dev        # http://localhost:3000
+npm run typecheck  # tsc --noEmit
+npm run lint
+npm run build
 ```
+
+## Architecture notes
+
+- `lib/site.ts` — single source of truth for name, URL, nav, contact
+- `lib/pages.ts` — static content manifest feeding sitemaps (swaps for CMS queries when Contentful lands)
+- `lib/schema.ts` — typed JSON-LD builders (Organization, WebSite, ProfessionalService, FAQPage)
+- `redirects.json` — all redirects; schema-validated at build, logged in `docs/redirects.md`
+- Engineering roadmap: `Nimikh_Engineering_Specifications.md`
 
 ## Deployment
 

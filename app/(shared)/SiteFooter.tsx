@@ -22,6 +22,12 @@ const connect: { href: string; label: string; external?: boolean }[] = [
   { href: '#', label: 'Facebook' },
 ];
 
+const legal = [
+  { href: '/legal/privacy', label: 'Privacy' },
+  { href: '/legal/terms', label: 'Terms' },
+  { href: '/legal/security', label: 'Security' },
+];
+
 const social = ['Facebook', 'Instagram', 'LinkedIn', 'Twitter / X'];
 
 /**
@@ -81,6 +87,11 @@ export function SiteFooter() {
         <div className="footer-bottom">
           <span>© 2026 {site.name}. All rights reserved.</span>
           <div className="footer-social">
+            {legal.map((l) => (
+              <Link key={l.href} href={l.href}>
+                {l.label}
+              </Link>
+            ))}
             {social.map((s) => (
               <a key={s} href="#">
                 {s}

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Breadcrumbs } from './(shared)/Breadcrumbs';
 import { JsonLd } from './(shared)/JsonLd';
 import { ScrollProgress } from './(shared)/ScrollProgress';
 import { ScrollReveal } from './(shared)/ScrollReveal';
@@ -50,6 +51,12 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
+  // Search-engine ownership verification (NIM-088). Tokens come from env;
+  // absent tokens emit nothing, so this is a no-op until configured.
+  verification: {
+    ...(site.verification.google ? { google: site.verification.google } : {}),
+    ...(site.verification.bing ? { other: { 'msvalidate.01': site.verification.bing } } : {}),
+  },
 };
 
 export const viewport: Viewport = {
@@ -65,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={graph(organization(), webSite(), professionalService())} />
         <ScrollProgress />
         <SiteNav />
+        <Breadcrumbs />
         {children}
         <SiteFooter />
         <ScrollReveal />

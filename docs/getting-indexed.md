@@ -9,16 +9,16 @@ weeks. Here's the whole flow.
 
 ## 1. Deploy to the real domain
 
-Make sure production is live at `https://nimikh.tech` (the canonical URL baked into
+Make sure production is live at `https://nimikh.com` (the canonical URL baked into
 every page). If you deploy somewhere else, set `NEXT_PUBLIC_SITE_URL` so canonicals,
 sitemaps, and schema all point at the right origin.
 
 ## 2. Verify ownership in Google Search Console
 
 1. Go to [search.google.com/search-console](https://search.google.com/search-console).
-2. Add a **Domain** property for `nimikh.tech` (preferred — covers http/https and
+2. Add a **Domain** property for `nimikh.com` (preferred — covers http/https and
    all subdomains). This needs a DNS TXT record at your domain registrar.
-   - *Or* add a **URL-prefix** property for `https://nimikh.tech` and choose the
+   - *Or* add a **URL-prefix** property for `https://nimikh.com` and choose the
      **HTML tag** method. Copy the token out of the `<meta name="google-site-verification" content="…">` tag it shows you.
 3. If you used the HTML-tag method, set the token as an environment variable in
    Vercel: `GOOGLE_SITE_VERIFICATION=<token>`, then redeploy. The site emits the
@@ -30,7 +30,7 @@ sitemaps, and schema all point at the right origin.
 In Search Console → **Sitemaps**, submit:
 
 ```
-https://nimikh.tech/sitemap.xml
+https://nimikh.com/sitemap.xml
 ```
 
 That's the sitemap index; Google will discover the split sitemaps
@@ -47,7 +47,7 @@ Use the **URL Inspection** tool on the homepage and top service pages, then clic
 2. You can **import from Google Search Console** in one click, or verify separately
    with the HTML-tag method — set `BING_SITE_VERIFICATION=<token>` in Vercel and
    redeploy (emitted as `msvalidate.01`).
-3. Submit the same `https://nimikh.tech/sitemap.xml`.
+3. Submit the same `https://nimikh.com/sitemap.xml`.
 
 ## What to expect
 
@@ -61,7 +61,7 @@ Use the **URL Inspection** tool on the homepage and top service pages, then clic
 
 ## How to confirm it's working
 
-- `site:nimikh.tech` in Google shows which pages are indexed.
+- `site:nimikh.com` in Google shows which pages are indexed.
 - Search Console → **Pages** shows indexed vs. excluded, with reasons.
 - Rich results: paste any URL into the
   [Rich Results Test](https://search.google.com/test/rich-results) — the homepage

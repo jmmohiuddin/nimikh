@@ -2,7 +2,7 @@
 
 Digital growth agency website — software development, growth marketing, and a creator marketplace connecting small businesses with affordable local creative talent. Based in Dhaka, Bangladesh.
 
-🌐 **Live:** [nimikh.tech](https://nimikh.tech) · [nimikh.vercel.app](https://nimikh.vercel.app)
+🌐 **Live:** [nimikh.com](https://nimikh.com) · [nimikh.vercel.app](https://nimikh.vercel.app)
 
 ## Stack
 

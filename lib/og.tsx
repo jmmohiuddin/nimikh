@@ -73,7 +73,7 @@ export function ogImage(title: string, subtitle?: string) {
           <div style={{ color: 'rgba(255,255,255,0.38)', fontSize: 26 }}>
             {site.tagline}
           </div>
-          <div style={{ color: '#5e6ad2', fontSize: 26, fontWeight: 600 }}>nimikh.tech</div>
+          <div style={{ color: '#5e6ad2', fontSize: 26, fontWeight: 600 }}>nimikh.com</div>
         </div>
       </div>
     ),

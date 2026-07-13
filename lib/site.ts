@@ -11,7 +11,7 @@ export const site = {
   /** Canonical origin, no trailing slash. Override with NEXT_PUBLIC_SITE_URL for previews. */
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
-    'https://nimikh.tech',
+    'https://nimikh.com',
   locale: 'en-BD',
   contactEmail: 'hello@nimikh.com',
   /**

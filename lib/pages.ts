@@ -22,6 +22,7 @@ export const pageEntries: SitemapEntry[] = [
   { path: '/pricing', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/faq', priority: 0.6, changeFrequency: 'monthly' },
+  { path: '/feedback', priority: 0.4, changeFrequency: 'monthly' },
 ];
 
 /** Service pillars. Sub-pages match /services/[slug]. */

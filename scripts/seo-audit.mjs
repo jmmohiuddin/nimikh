@@ -32,7 +32,9 @@ const INDEXABLE = [
   '/case-studies',
   '/contact',
   '/faq',
+  '/feedback',
   '/founders/mohiuddin',
+  '/founders/maruf-shezad',
 ];
 
 const NOINDEX_OK = ['/legal/privacy', '/legal/terms', '/legal/security'];

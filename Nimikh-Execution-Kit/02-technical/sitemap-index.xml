@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sitemap index — deploy at https://nimikh.com/sitemap.xml -->
+<!-- Generate child sitemaps dynamically from your Next.js routes. -->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://nimikh.com/sitemaps/pages.xml</loc>
+    <lastmod>2026-07-13</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://nimikh.com/sitemaps/services.xml</loc>
+    <lastmod>2026-07-13</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://nimikh.com/sitemaps/industries.xml</loc>
+    <lastmod>2026-07-13</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://nimikh.com/sitemaps/insights.xml</loc>
+    <lastmod>2026-07-13</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://nimikh.com/sitemaps/case-studies.xml</loc>
+    <lastmod>2026-07-13</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://nimikh.com/sitemaps/glossary.xml</loc>
+    <lastmod>2026-07-13</lastmod>
+  </sitemap>
+</sitemapindex>

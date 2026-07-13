@@ -1,0 +1,36 @@
+# Nimikh — production robots.txt
+# Deploy at https://nimikh.com/robots.txt
+# Do NOT block GPTBot, ClaudeBot, PerplexityBot, or Google-Extended.
+# Blocking them removes eligibility for AI-answer grounding and citation.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /preview/
+Disallow: /drafts/
+Disallow: /*?*preview=true
+Disallow: /search?
+
+# Explicit allow-list for LLM crawlers (informational — Allow is the default)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Sitemap index
+Sitemap: https://nimikh.com/sitemap.xml

@@ -57,7 +57,7 @@ export const legalPages: LegalPage[] = [
         body: [
           'You can request access to, correction of, or deletion of your personal data at any time.',
           'You can withdraw analytics consent at any time via the cookie preferences.',
-          'To exercise any right, email our Data Protection contact at nimikh.tech@gmail.com.',
+          'To exercise any right, email our Data Protection contact at hello@nimikh.com.',
         ],
       },
     ],
@@ -123,7 +123,7 @@ export const legalPages: LegalPage[] = [
       {
         heading: 'Reporting a vulnerability',
         body: [
-          'Found a security issue? Email nimikh.tech@gmail.com with details and steps to reproduce.',
+          'Found a security issue? Email hello@nimikh.com with details and steps to reproduce.',
           'Our machine-readable policy lives at /.well-known/security.txt.',
         ],
       },
@@ -150,7 +150,7 @@ export const legalPages: LegalPage[] = [
       },
       {
         heading: 'Contact',
-        body: ['General and legal correspondence: nimikh.tech@gmail.com.'],
+        body: ['General and legal correspondence: hello@nimikh.com.'],
       },
     ],
     changelog: [{ date: UPDATED, note: 'Initial version published for review.' }],

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Accordion } from '../(shared)/Accordion';
+import { JsonLd } from '../(shared)/JsonLd';
+import { faqPage, graph } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -89,6 +91,7 @@ function isCross(v: string) { return v === '—'; }
 export default function PricingPage() {
   return (
     <>
+      <JsonLd data={graph(faqPage(pricingFaqs, absoluteUrl('/pricing')))} />
       <section className="page-hero">
         <div className="blob-container" aria-hidden="true">
           <div className="blob blob-1" style={{ opacity: .07 }} />

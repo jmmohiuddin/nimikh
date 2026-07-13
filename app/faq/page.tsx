@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Accordion } from '../(shared)/Accordion';
+import { JsonLd } from '../(shared)/JsonLd';
+import { faqPage, graph } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -74,6 +76,8 @@ const sections = [
 export default function FaqPage() {
   return (
     <>
+      {/* FAQPage schema built from the same array the accordions render (NIM-016). */}
+      <JsonLd data={graph(faqPage(sections.flatMap((s) => s.faqs), absoluteUrl('/faq')))} />
       <section className="page-hero">
         <div className="blob-container" aria-hidden="true">
           <div className="blob blob-1" style={{ opacity: .06 }} />

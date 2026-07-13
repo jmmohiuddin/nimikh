@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Accordion } from '../(shared)/Accordion';
 import { ContactForm } from '../(shared)/ContactForm';
+import { JsonLd } from '../(shared)/JsonLd';
+import { faqPage, graph } from '@/lib/schema';
 import { absoluteUrl, site } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -21,6 +23,7 @@ const contactFaqs = [
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={graph(faqPage(contactFaqs, absoluteUrl('/contact')))} />
       <section className="page-hero" style={{ paddingBottom: 'var(--space-48)' }}>
         <div className="blob-container" aria-hidden="true">
           <div className="blob blob-1" style={{ opacity: .06 }} />

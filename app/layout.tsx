@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
+import { JsonLd } from './(shared)/JsonLd';
 import { ScrollProgress } from './(shared)/ScrollProgress';
 import { ScrollReveal } from './(shared)/ScrollReveal';
 import { SiteFooter } from './(shared)/SiteFooter';
 import { SiteNav } from './(shared)/SiteNav';
+import { graph, organization, professionalService, webSite } from '@/lib/schema';
 import { site } from '@/lib/site';
 import './globals.css';
 
@@ -59,6 +61,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
       <body>
+        {/* Site-wide entity graph (NIM-011): one JSON-LD blob, stable @ids. */}
+        <JsonLd data={graph(organization(), webSite(), professionalService())} />
         <ScrollProgress />
         <SiteNav />
         {children}

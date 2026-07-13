@@ -97,8 +97,14 @@ export function middleware(req: NextRequest) {
   // 3. Pass through with headers. Bot allowlist is informational — the
   //    matcher already lets these through; noting them here so a later
   //    edge rule (rate limiting, JS challenges) can special-case them.
+  //
+  //    Also propagate x-pathname to downstream server components. The
+  //    root layout uses it to hide the site nav/footer on /admin, since
+  //    server components can't call usePathname().
   const isLlmBot = LLM_BOTS.some((b) => ua.includes(b));
-  const res = NextResponse.next();
+  const passthroughHeaders = new Headers(req.headers);
+  passthroughHeaders.set('x-pathname', url.pathname);
+  const res = NextResponse.next({ request: { headers: passthroughHeaders } });
   if (isLlmBot) {
     res.headers.set('x-bot-allowlist', 'llm');
   }

@@ -48,6 +48,10 @@ export function SiteNav({
     setOpen(false);
   }, [pathname]);
 
+  // Admin has its own sticky bar; don't stack two. Guard placed AFTER all
+  // hooks to keep hook order stable across pathname changes.
+  if (pathname.startsWith('/admin')) return null;
+
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
     return pathname === href || pathname.startsWith(`${href}/`);

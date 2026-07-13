@@ -68,8 +68,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
       <body>
-        {/* Site-wide entity graph (NIM-011): one JSON-LD blob, stable @ids. */}
+        {/* Site-wide entity graph (NIM-011): one JSON-LD blob, stable @ids.
+            Renders on every page, including admin — harmless there (admin
+            is robots-disallowed), and keeps this layout statically renderable. */}
         <JsonLd data={graph(organization(), webSite(), professionalService())} />
+        {/* SiteNav, Breadcrumbs, SiteFooter each self-suppress on /admin
+            via usePathname — that keeps the layout static (no headers() call)
+            while avoiding double-chrome on the admin surface. */}
         <ScrollProgress />
         <SiteNav />
         <Breadcrumbs />

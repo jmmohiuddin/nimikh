@@ -311,8 +311,23 @@ textarea.form-input { resize: vertical; min-height: 130px; }
 .footer-social a { color: var(--fg-tertiary); font-size: 0.8125rem; transition: color 0.15s ease; }
 .footer-social a:hover { color: var(--fg-primary); }
 
+/* ======================================  BREADCRUMBS  ====================================== */
+/* Sits between the fixed nav and the page hero on every interior page.
+   Its top padding clears the fixed nav, so .page-hero drops its own large
+   top padding (below) to keep total top spacing close to the original. */
+.breadcrumbs { position: relative; z-index: 1; padding: 88px 0 0; }
+.breadcrumbs-list { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--fg-tertiary); }
+.breadcrumbs-item { display: inline-flex; align-items: center; gap: 6px; }
+.breadcrumbs-item a { color: var(--fg-tertiary); transition: color 0.15s ease; }
+.breadcrumbs-item a:hover { color: var(--fg-primary); }
+.breadcrumbs-item [aria-current="page"] { color: var(--fg-secondary); }
+.breadcrumbs-sep { color: var(--border-subtle); }
+
 /* ======================================  PAGE HERO  ====================================== */
-.page-hero { padding: 140px 0 80px; position: relative; overflow: hidden; }
+/* Interior pages are always preceded by .breadcrumbs (which clears the
+   fixed nav), so the hero only needs modest top padding. The homepage
+   uses .hero, not .page-hero, and renders no breadcrumb. */
+.page-hero { padding: 28px 0 80px; position: relative; overflow: hidden; }
 .page-hero::after { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(rgba(255,255,255,.03) 1px, transparent 1px); background-size: 32px 32px; }
 .page-hero-content { position: relative; z-index: 1; }
 

@@ -43,11 +43,24 @@ Use the **URL Inspection** tool on the homepage and top service pages, then clic
 
 ## 5. Bing (5 minutes, gets you Bing + partly ChatGPT search)
 
-1. Go to [bing.com/webmasters](https://www.bing.com/webmasters).
-2. You can **import from Google Search Console** in one click, or verify separately
-   with the HTML-tag method — set `BING_SITE_VERIFICATION=<token>` in Vercel and
-   redeploy (emitted as `msvalidate.01`).
-3. Submit the same `https://nimikh.com/sitemap.xml`.
+Go to [bing.com/webmasters](https://www.bing.com/webmasters). Pick **one**
+verification method:
+
+- **Import from Google Search Console (recommended — zero code).** One click,
+  reuses your Google verification. Since Google is already verified, this is the
+  fastest and avoids any deploy.
+- **Meta tag.** Set `BING_SITE_VERIFICATION=<token>` in Vercel → redeploy. The site
+  emits `<meta name="msvalidate.01" …>` automatically.
+- **XML file.** Set `BING_SITE_AUTH=<token>` in Vercel → redeploy. The site serves
+  `/BingSiteAuth.xml` with that token.
+
+> ⚠️ The XML-file and meta-tag methods only work **after** you set the env var in
+> Vercel and redeploy. If Bing shows a verification error, it's almost always
+> because the token isn't live yet — check `https://nimikh.com/BingSiteAuth.xml`
+> returns your token (file method) or that the homepage `<head>` contains the
+> `msvalidate.01` tag (meta method). The GSC import needs neither.
+
+Then submit the same `https://nimikh.com/sitemap.xml` under **Sitemaps**.
 
 ## What to expect
 

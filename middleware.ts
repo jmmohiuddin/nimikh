@@ -82,8 +82,13 @@ export function middleware(req: NextRequest) {
     return applySecurityHeaders(NextResponse.redirect(url, 301));
   }
 
-  // 2. Lowercase path enforcement. Uppercase hits get a 301 to lowercase.
-  if (/[A-Z]/.test(url.pathname)) {
+  // 2. Lowercase path enforcement. Canonicalise uppercase *content* URLs
+  //    to lowercase (NIM-002). Skip paths with a file extension — static
+  //    and verification files are legitimately case-sensitive (e.g. Bing's
+  //    `BingSiteAuth.xml`, Google's `googleXXXX.html`), and lowercasing
+  //    them 301s the crawler to a path that doesn't exist.
+  const hasFileExtension = /\.[a-z0-9]+$/i.test(url.pathname);
+  if (/[A-Z]/.test(url.pathname) && !hasFileExtension) {
     const cleaned = url.clone();
     cleaned.pathname = url.pathname.toLowerCase();
     return applySecurityHeaders(NextResponse.redirect(cleaned, 301));

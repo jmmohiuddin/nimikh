@@ -20,7 +20,19 @@ const contactFaqs = [
   { question: "What if I'm not happy with the work?", answer: "We offer revisions at every milestone stage and don't consider a project complete until you're satisfied. For marketplace orders, funds are held in escrow and only released on your approval." },
 ];
 
-export default function ContactPage() {
+const VALID_INTENTS = ['software', 'marketing', 'creative', 'creator', 'hiring', 'other'] as const;
+type Intent = (typeof VALID_INTENTS)[number];
+
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ intent?: string; role?: string }>;
+}) {
+  const params = await searchParams;
+  // Support both ?intent=hiring (from the About team card) and legacy ?role=creator.
+  const raw = params.intent ?? (params.role === 'creator' ? 'creator' : undefined);
+  const initialIntent: Intent | undefined = VALID_INTENTS.includes(raw as Intent) ? (raw as Intent) : undefined;
+
   return (
     <>
       <JsonLd data={graph(faqPage(contactFaqs, absoluteUrl('/contact')))} />
@@ -52,7 +64,7 @@ export default function ContactPage() {
                 <p className="text-body text-sm mb-24">
                   Fill in the form below and we&apos;ll get back to you within 24 hours.
                 </p>
-                <ContactForm />
+                <ContactForm initialIntent={initialIntent} />
               </div>
             </div>
 

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { team } from '@/content/team';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -16,19 +17,8 @@ const values = [
   { icon: '⚡', title: 'Move fast', body: "We don't believe in slow agencies. Quality and speed together." },
 ];
 
-const team: Array<{
-  name: string; role: string; initial: string; bg: string; bio: string; chips: string[]; href?: string;
-}> = [
-  { name: 'Mohiuddin', role: 'Founder & CEO', initial: 'M', bg: 'linear-gradient(135deg,#5e6ad2,#7c3aed)',
-    bio: 'Visionary behind Nimikh. Passionate about connecting local creative talent with businesses that need them.',
-    chips: ['Strategy', 'Business Dev'], href: '/founders/mohiuddin' },
-  { name: 'Tech Lead', role: 'Head of Engineering', initial: 'T', bg: 'linear-gradient(135deg,#0ea5e9,#5e6ad2)',
-    bio: 'Full-stack architect with 7 years of experience building scalable web products for startups and enterprises.',
-    chips: ['Next.js', 'Node.js', 'AWS'] },
-  { name: 'Growth Lead', role: 'Head of Marketing', initial: 'S', bg: 'linear-gradient(135deg,#10b981,#0ea5e9)',
-    bio: 'Performance marketing specialist. Managed over ৳50M in ad spend across Meta, Google, and TikTok platforms.',
-    chips: ['Meta Ads', 'SEO', 'Analytics'] },
-];
+// Team roster comes from content/team.ts — see ADR-05 (no fabricated
+// members) and ADR-06 (real founder bios from the Execution Kit).
 
 const why = [
   { icon: '🏠', title: 'One roof, three powers', body: 'Software, marketing, and creative — all under one agency. No coordination headaches, no finger-pointing between vendors.' },
@@ -126,14 +116,20 @@ export default function AboutPage() {
           </div>
           <div className="grid-3">
             {team.map((m, i) => (
-              <div key={m.name} className={`card fade-up${i > 0 ? ` d${i}` : ''}`} style={{ textAlign: 'center' }}>
+              <div
+                key={m.name}
+                className={`card fade-up${i > 0 ? ` d${i}` : ''}`}
+                style={{ textAlign: 'center', opacity: m.hiring ? 0.75 : 1 }}
+              >
                 <div
                   style={{
-                    width: 80, height: 80, borderRadius: '50%', background: m.bg,
+                    width: 80, height: 80, borderRadius: '50%', background: m.gradient,
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: '1.5rem', fontWeight: 700, color: 'white',
+                    fontSize: '1.5rem', fontWeight: 700, color: m.hiring ? 'var(--fg-secondary)' : 'white',
                     margin: '0 auto var(--space-20)',
+                    border: m.hiring ? '1px dashed var(--border-subtle)' : 'none',
                   }}
+                  aria-hidden="true"
                 >
                   {m.initial}
                 </div>
@@ -145,8 +141,10 @@ export default function AboutPage() {
                 <div className="chip-group mt-16" style={{ justifyContent: 'center' }}>
                   {m.chips.map((c) => <span key={c} className="chip">{c}</span>)}
                 </div>
-                {m.href ? (
-                  <Link href={m.href} className="btn btn-ghost btn-sm mt-16">View profile →</Link>
+                {m.hiring ? (
+                  <Link href="/contact?intent=hiring" className="btn btn-ghost btn-sm mt-16">Apply →</Link>
+                ) : m.founderSlug ? (
+                  <Link href={`/founders/${m.founderSlug}`} className="btn btn-ghost btn-sm mt-16">View profile →</Link>
                 ) : null}
               </div>
             ))}

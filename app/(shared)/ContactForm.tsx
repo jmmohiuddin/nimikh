@@ -7,33 +7,59 @@ const intents = [
   { value: 'marketing', label: 'Growth Marketing' },
   { value: 'creative', label: 'Creative / Marketplace' },
   { value: 'creator', label: 'Join as Creator' },
+  { value: 'hiring', label: 'Career (Growth Lead)' },
   { value: 'other', label: 'Something Else' },
 ] as const;
 
 type Intent = (typeof intents)[number]['value'];
 
 /**
- * Placeholder submit handler — the pre-Next.js site had no real backend,
- * so we preserve the same UX (spinner → toast) client-side. Wiring to a
- * real endpoint (HubSpot per NIM-087) lands in a later ticket; the shape
- * of the POST body will be identical to these input names.
+ * Real submission to POST /api/leads. Validation is server-side (Zod);
+ * client-side we just surface the resulting error message. Includes a
+ * hidden honeypot input (`website`) that legit users leave empty.
  */
-export function ContactForm() {
-  const [intent, setIntent] = useState<Intent>('software');
+export function ContactForm({ initialIntent }: { initialIntent?: Intent } = {}) {
+  const [intent, setIntent] = useState<Intent>(initialIntent ?? 'software');
   const [submitting, setSubmitting] = useState(false);
-  const [toast, setToast] = useState<string | null>(null);
+  const [toast, setToast] = useState<{ msg: string; kind: 'ok' | 'err' } | null>(null);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (submitting) return;
     setSubmitting(true);
-    // Simulated latency preserves the visual feedback of the old form.
-    await new Promise((r) => setTimeout(r, 1200));
-    (e.target as HTMLFormElement).reset();
-    setIntent('software');
-    setSubmitting(false);
-    setToast("✓ Message sent! We'll reply within 24 hours.");
-    setTimeout(() => setToast(null), 4200);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const payload = {
+      intent,
+      firstName: String(data.get('first_name') ?? ''),
+      lastName: String(data.get('last_name') ?? ''),
+      email: String(data.get('email') ?? ''),
+      phone: String(data.get('phone') ?? ''),
+      company: String(data.get('company') ?? ''),
+      budget: String(data.get('budget') ?? ''),
+      message: String(data.get('message') ?? ''),
+      website: String(data.get('website') ?? ''),
+    };
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const json = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
+      if (!res.ok || !json.ok) {
+        setToast({ msg: json.error ?? 'Something went wrong. Please try again.', kind: 'err' });
+      } else {
+        form.reset();
+        setIntent(initialIntent ?? 'software');
+        setToast({ msg: "✓ Message sent! We'll reply within 24 hours.", kind: 'ok' });
+      }
+    } catch {
+      setToast({ msg: 'Network error. Please try again.', kind: 'err' });
+    } finally {
+      setSubmitting(false);
+      setTimeout(() => setToast(null), 5000);
+    }
   }
 
   return (
@@ -67,6 +93,15 @@ export function ContactForm() {
 
       <form onSubmit={handleSubmit}>
         <input type="hidden" name="intent" value={intent} />
+        {/* Honeypot: legit users never see this. Bots often fill every input. */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, opacity: 0 }}
+        />
         <div
           style={{
             display: 'grid',
@@ -139,8 +174,13 @@ export function ContactForm() {
       </form>
 
       {toast && (
-        <div className="toast show" role="status" aria-live="polite">
-          {toast}
+        <div
+          className="toast show"
+          role="status"
+          aria-live="polite"
+          style={toast.kind === 'err' ? { borderColor: 'var(--status-error)', color: 'var(--status-error)' } : undefined}
+        >
+          {toast.msg}
         </div>
       )}
     </>

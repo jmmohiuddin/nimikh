@@ -18,7 +18,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/preview/', '/*?*'],
+        disallow: ['/api/', '/admin/', '/admin', '/preview/', '/*?*'],
       },
       ...LLM_BOTS.map((bot) => ({
         userAgent: bot,

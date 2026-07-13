@@ -27,6 +27,7 @@ Digital growth agency website — software development, growth marketing, and a 
 | `/case-studies` | Client case studies with metrics |
 | `/contact` | Contact form with inquiry routing |
 | `/faq` | Categorized FAQ |
+| `/founders/[slug]` | Founder profiles with Person schema |
 | `/legal/*` | Privacy, terms, security, entity, compliance |
 
 Machine-readable surfaces: `/robots.txt`, `/sitemap.xml` (+ split sitemaps), `/llms.txt`, `/api/knowledge`, `/.well-known/security.txt`.
@@ -39,7 +40,13 @@ npm run dev        # http://localhost:3000
 npm run typecheck  # tsc --noEmit
 npm run lint
 npm run build
+npm run audit:seo  # boots the built site and checks indexability invariants
 ```
+
+## Getting into Google
+
+Deploying indexable code is necessary but not sufficient — you must verify the site
+in Google Search Console and submit the sitemap. Step-by-step: [`docs/getting-indexed.md`](docs/getting-indexed.md).
 
 ## Architecture notes
 

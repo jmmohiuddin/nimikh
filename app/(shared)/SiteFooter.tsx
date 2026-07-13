@@ -1,40 +1,24 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import {
+  footerCompany as company,
+  footerConnect as connect,
+  footerLegal as legal,
+  footerServices as services,
+  footerSocial as social,
+} from '@/content/footer';
 import { site } from '@/lib/site';
 
-const services = [
-  { href: '/services/software', label: 'Software Development' },
-  { href: '/services/marketing', label: 'Growth Marketing' },
-  { href: '/services/creative', label: 'Creative Studio' },
-  { href: '/marketplace', label: 'Creator Marketplace' },
-];
-
-const company = [
-  { href: '/about', label: 'About Us' },
-  { href: '/case-studies', label: 'Case Studies' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/faq', label: 'FAQ' },
-];
-
-const connect: { href: string; label: string; external?: boolean }[] = [
-  { href: '/contact', label: 'Contact' },
-  { href: `mailto:${site.contactEmail}`, label: site.contactEmail, external: true },
-  { href: '#', label: 'LinkedIn' },
-  { href: '#', label: 'Facebook' },
-];
-
-const legal = [
-  { href: '/legal/privacy', label: 'Privacy' },
-  { href: '/legal/terms', label: 'Terms' },
-  { href: '/legal/security', label: 'Security' },
-];
-
-const social = ['Facebook', 'Instagram', 'LinkedIn', 'Twitter / X'];
-
 /**
- * Site-wide footer. Server component — no client interactivity.
- * Structure mirrors the pre-Next.js footer 1:1.
+ * Site-wide footer. Client component only so it can self-suppress on
+ * /admin via usePathname — the payload is trivial (no interactivity),
+ * and keeping the root layout static outweighs saving the client cost.
  */
 export function SiteFooter() {
+  const pathname = usePathname();
+  if (pathname.startsWith('/admin')) return null;
   return (
     <footer className="footer">
       <div className="container">

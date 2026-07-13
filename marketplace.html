@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creator Marketplace — Nimikh</title>
+  <meta name="description" content="Browse 240+ verified local creators — video editors, graphic designers, motion artists — and hire them with escrow protection." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .creator-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-16); }
+    @media (max-width:1100px) { .creator-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width:768px) { .creator-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:480px) { .creator-grid { grid-template-columns: 1fr; } }
+
+    .how-it-works-row { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-16); }
+    @media (max-width:900px) { .how-it-works-row { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width:480px) { .how-it-works-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="scroll-bar"></div>
+<nav class="nav" id="nav"><div class="container"><div class="nav-inner">
+  <a href="index.html" class="nav-logo"><span class="nav-logo-mark">N</span>Nimikh</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+    <li><a href="marketplace.html">Marketplace</a></li><li><a href="pricing.html">Pricing</a></li>
+    <li><a href="case-studies.html">Work</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="contact.html?role=creator" class="btn btn-ghost btn-sm btn-nav-hide">Join as Creator</a>
+    <a href="contact.html" class="btn btn-primary btn-sm">Hire a Creator</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></div></nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="blob-container">
+    <div class="blob blob-1" style="opacity:.07;background:#7c3aed"></div>
+    <div class="blob blob-2" style="opacity:.05"></div>
+  </div>
+  <div class="container page-hero-content">
+    <div class="section-label fade-in"><span class="section-label-line"></span><span class="section-label-text">Creator Marketplace</span></div>
+    <h1 class="text-display fade-up d1" style="max-width:700px">Affordable creative talent. <span class="text-indigo">Ready to work.</span></h1>
+    <p class="text-body mt-24 fade-up d2" style="max-width:520px;font-size:1.1rem">Connect with 240+ verified local artists — video editors, graphic designers, photographers, and motion artists. Hire with confidence through our escrow-protected platform.</p>
+    <div style="display:flex;gap:var(--space-24);margin-top:var(--space-32);flex-wrap:wrap;align-items:center" class="fade-up d3">
+      <div style="display:flex;gap:var(--space-16)">
+        <div><div class="stat-number" style="font-size:2rem" data-count="240" data-suffix="+">0+</div><div class="stat-label">Verified creators</div></div>
+        <div class="stat-bar-divider"></div>
+        <div><div class="stat-number" style="font-size:2rem">৳3k</div><div class="stat-label">Minimum budget</div></div>
+        <div class="stat-bar-divider"></div>
+        <div><div class="stat-number" style="font-size:2rem">100%</div><div class="stat-label">Escrow safe</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="padding:var(--space-48) 0;border-top:1px solid var(--border-hairline);border-bottom:1px solid var(--border-hairline)">
+  <div class="container">
+    <div class="how-it-works-row fade-up">
+      <div style="display:flex;gap:var(--space-12);align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--interactive-action);color:white;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+        <div><div style="font-weight:590;font-size:.9rem;margin-bottom:4px">Browse & Filter</div><p class="text-body" style="font-size:.8rem">Filter by skill, category, budget, and availability.</p></div>
+      </div>
+      <div style="display:flex;gap:var(--space-12);align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--interactive-action);color:white;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+        <div><div style="font-weight:590;font-size:.9rem;margin-bottom:4px">Send a Brief</div><p class="text-body" style="font-size:.8rem">Describe your project and set a budget. No obligation.</p></div>
+      </div>
+      <div style="display:flex;gap:var(--space-12);align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--interactive-action);color:white;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+        <div><div style="font-weight:590;font-size:.9rem;margin-bottom:4px">Escrow Payment</div><p class="text-body" style="font-size:.8rem">Funds are held securely until you approve the work.</p></div>
+      </div>
+      <div style="display:flex;gap:var(--space-12);align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--interactive-action);color:white;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div>
+        <div><div style="font-weight:590;font-size:.9rem;margin-bottom:4px">Approve & Release</div><p class="text-body" style="font-size:.8rem">Happy with the result? Approve and release payment.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATOR GRID -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--space-16);margin-bottom:var(--space-32)" class="fade-up">
+      <div>
+        <h2 class="text-h2 mb-8">Browse Creators</h2>
+        <p class="text-body text-sm">240+ verified professionals ready for your project.</p>
+      </div>
+      <a href="contact.html?role=creator" class="btn btn-ghost btn-sm">Are you a creator? Join →</a>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs fade-in">
+      <button class="filter-tab active" data-filter="all">All Creators</button>
+      <button class="filter-tab" data-filter="video">Video Editing</button>
+      <button class="filter-tab" data-filter="design">Graphic Design</button>
+      <button class="filter-tab" data-filter="motion">Motion Graphics</button>
+      <button class="filter-tab" data-filter="photo">Photography</button>
+      <button class="filter-tab" data-filter="copy">Copywriting</button>
+    </div>
+
+    <!-- Creator Cards -->
+    <div class="creator-grid">
+
+      <div class="creator-card fade-up" data-category="video">
+        <div class="creator-cover"><div class="creator-cover-gradient" style="background:linear-gradient(135deg,#5e6ad2,#7c3aed)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem">🎬</div></div>
+        <div class="creator-body">
+          <div class="creator-avatar" style="background:linear-gradient(135deg,#5e6ad2,#7c3aed)">R</div>
+          <div class="creator-name">Riya Ahmed</div>
+          <div class="creator-role">Video Editor & Content Creator</div>
+          <div class="chip-group"><span class="chip">Reels</span><span class="chip">TikTok</span><span class="chip">Hooks</span></div>
+          <div class="creator-footer">
+            <span class="creator-rate">From ৳5,000</span>
+            <span class="creator-rating"><span class="star">★</span> 4.9 (48 reviews)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-card fade-up d1" data-category="motion">
+        <div class="creator-cover"><div class="creator-cover-gradient" style="background:linear-gradient(135deg,#ec4899,#7c3aed)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem">✨</div></div>
+        <div class="creator-body">
+          <div class="creator-avatar" style="background:linear-gradient(135deg,#ec4899,#7c3aed)">S</div>
+          <div class="creator-name">Sadia Islam</div>
+          <div class="creator-role">Motion Graphics Artist</div>
+          <div class="chip-group"><span class="chip">After Effects</span><span class="chip">Logo Anim</span></div>
+          <div class="creator-footer">
+            <span class="creator-rate">From ৳8,000</span>
+            <span class="creator-rating"><span class="star">★</span> 5.0 (32 reviews)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-card fade-up d2" data-category="design">
+        <div class="creator-cover"><div class="creator-cover-gradient" style="background:linear-gradient(135deg,#0ea5e9,#5e6ad2)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem">🎨</div></div>
+        <div class="creator-body">
+          <div class="creator-avatar" style="background:linear-gradient(135deg,#0ea5e9,#5e6ad2)">K</div>
+          <div class="creator-name">Karim Hassan</div>
+          <div class="creator-role">Brand Designer</div>
+          <div class="chip-group"><span class="chip">Logos</span><span class="chip">Brand Kits</span><span class="chip">Social</span></div>
+          <div class="creator-footer">
+            <span class="creator-rate">From ৳3,500</span>
+            <span class="creator-rating"><span class="star">★</span> 4.8 (61 reviews)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-card fade-up d3" data-category="photo">
+        <div class="creator-cover"><div class="creator-cover-gradient" style="background:linear-gradient(135deg,#f59e0b,#ef4444)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem">📸</div></div>
+        <div class="creator-body">
+          <div class="creator-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">A</div>
+          <div class="creator-name">Arif Hossain</div>
+          <div class="creator-role">Commercial Photographer</div>
+          <div class="chip-group"><span class="chip">Products</span><span class="chip">Lifestyle</span><span class="chip">Events</span></div>
+          <div class="creator-footer">
+            <span class="creator-rate">From ৳8,000</span>
+            <span class="creator-rating"><span class="star">★</span> 4.9 (27 reviews)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-card fade-up" data-category="video">
+        <div class="creator-cover"><div class="creator-cover-gradient" style="background:linear-gradient(135deg,#10b981,#0ea5e9)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem">🎥</div></div>
+        <div class="creator-body">
+          <div class="creator-avatar" style="background:linear-gradient(135deg,#10b981,#0ea5e9)">N</div>
+          <div class="creator-name">Nusrat Jahan</div>
+          <div class="creator-role">UGC Creator & Presenter</div>
+          <div class="chip-group"><span class="chip">UGC Ads</span><span class="chip">Reviews</span><span class="chip">Unboxing</span></div>
+          <div class="creator-footer">
+            <span class="creator-rate">From ৳4,000</span>
+            <span class="creator-rating"><span class="star">★</span> 4.7 (55 reviews)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-card fade-up d1" data-category="design">
+        <div class="creator-cover"><div class="creator-cover-gradient" style="background:linear-gradient(135deg,#7c3aed,#ec4899)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem">🖌️</div></div>
+        <div class="creator-body">
+          <div class="creator-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">T</div>
+          <div class="creator-name">Tahsin Rahman</div>
+          <div class="creator-role">Illustration & Digital Art</div>
+          <div class="chip-group"><span class="chip">Illustration</span><span class="chip">Posters</span><span class="chip">Characters</span></div>
+          <div class="creator-footer">
+            <span class="creator-rate">From ৳4,500</span>
+            <span class="creator-rating"><span class="star">★</span> 4.9 (38 reviews)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-card fade-up d2" data-category="copy">
+        <div class="creator-cover"><div class="creator-cover-gradient" style="background:linear-gradient(135deg,#5e6ad2,#10b981)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem">✍️</div></div>
+        <div class="creator-body">
+          <div class="creator-avatar" style="background:linear-gradient(135deg,#5e6ad2,#10b981)">F</div>
+          <div class="creator-name">Fatima Akter</div>
+          <div class="creator-role">Copywriter & Content Strategist</div>
+          <div class="chip-group"><span class="chip">Ad Copy</span><span class="chip">Bangla</span><span class="chip">Blogs</span></div>
+          <div class="creator-footer">
+            <span class="creator-rate">From ৳1,500</span>
+            <span class="creator-rating"><span class="star">★</span> 4.8 (72 reviews)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="creator-card fade-up d3" data-category="motion">
+        <div class="creator-cover"><div class="creator-cover-gradient" style="background:linear-gradient(135deg,#ef4444,#f59e0b)"></div><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem">🎞️</div></div>
+        <div class="creator-body">
+          <div class="creator-avatar" style="background:linear-gradient(135deg,#ef4444,#f59e0b)">M</div>
+          <div class="creator-name">Mehedi Hasan</div>
+          <div class="creator-role">2D Animator & Motion Artist</div>
+          <div class="chip-group"><span class="chip">Explainers</span><span class="chip">Ads</span><span class="chip">2D Anim</span></div>
+          <div class="creator-footer">
+            <span class="creator-rate">From ৳10,000</span>
+            <span class="creator-rating"><span class="star">★</span> 4.9 (19 reviews)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load more notice -->
+    <div style="text-align:center;padding:var(--space-48) 0;border-top:1px solid var(--border-hairline);margin-top:var(--space-48)" class="fade-in d2">
+      <p class="text-body text-sm mb-16">Showing 8 of 240+ creators. Register as a business to browse the full directory and send project briefs.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg">Get Full Access →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST SECTION -->
+<section class="section" style="border-top:1px solid var(--border-hairline)">
+  <div class="container">
+    <div class="section-header centered fade-up">
+      <div class="section-label" style="justify-content:center"><span class="section-label-line"></span><span class="section-label-text">Why Nimikh Marketplace</span></div>
+      <h2 class="text-h2">Hire local. Pay smart. Get results.</h2>
+    </div>
+    <div class="grid-3 fade-up d1">
+      <div class="card text-center" style="padding:var(--space-32)">
+        <div style="font-size:2.5rem;margin-bottom:var(--space-16)">🔒</div>
+        <h3 class="text-h3 mb-12">Escrow Protection</h3>
+        <p class="text-body text-sm">Your money stays in escrow until you approve the final deliverable. Zero risk of getting bad work or losing your budget.</p>
+      </div>
+      <div class="card text-center" style="padding:var(--space-32)">
+        <div style="font-size:2.5rem;margin-bottom:var(--space-16)">✅</div>
+        <h3 class="text-h3 mb-12">Verified Talent</h3>
+        <p class="text-body text-sm">Every creator is manually reviewed. We check their portfolio, skills, and communication before they join the marketplace.</p>
+      </div>
+      <div class="card text-center" style="padding:var(--space-32)">
+        <div style="font-size:2.5rem;margin-bottom:var(--space-16)">🚀</div>
+        <h3 class="text-h3 mb-12">Fast Turnaround</h3>
+        <p class="text-body text-sm">Most creators deliver within 48–72 hours. Need it faster? Filter by delivery speed to find creators who can meet your deadline.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN AS CREATOR -->
+<section class="section" style="border-top:1px solid var(--border-hairline)">
+  <div class="container">
+    <div class="grid-2" style="gap:var(--space-64);align-items:center">
+      <div class="fade-up">
+        <div class="section-label"><span class="section-label-line"></span><span class="section-label-text">Are You a Creator?</span></div>
+        <h2 class="text-h2 mb-16">Turn your creative skills into a steady income.</h2>
+        <p class="text-body mb-24">Nimikh is built to support local artists and give them access to businesses that need their work. Join our marketplace, set your rates, and start earning from projects that match your skills.</p>
+        <div style="display:flex;flex-direction:column;gap:var(--space-12);margin-bottom:var(--space-32)">
+          <div style="display:flex;align-items:center;gap:var(--space-12);font-size:.9rem;color:var(--fg-secondary)"><span style="color:var(--interactive-action);font-weight:700">✓</span> Set your own rates — you're in control</div>
+          <div style="display:flex;align-items:center;gap:var(--space-12);font-size:.9rem;color:var(--fg-secondary)"><span style="color:var(--interactive-action);font-weight:700">✓</span> Instant bKash / Nagad payouts on approval</div>
+          <div style="display:flex;align-items:center;gap:var(--space-12);font-size:.9rem;color:var(--fg-secondary)"><span style="color:var(--interactive-action);font-weight:700">✓</span> Showcase your portfolio to 80+ active businesses</div>
+          <div style="display:flex;align-items:center;gap:var(--space-12);font-size:.9rem;color:var(--fg-secondary)"><span style="color:var(--interactive-action);font-weight:700">✓</span> We handle all client communication and contracts</div>
+        </div>
+        <a href="contact.html?role=creator" class="btn btn-primary btn-lg">Apply as Creator →</a>
+      </div>
+      <div class="fade-up d2">
+        <div class="card" style="padding:var(--space-32);background:linear-gradient(135deg,rgba(94,106,210,.08),var(--surface-base))">
+          <div style="font-size:2rem;margin-bottom:var(--space-16)">💰</div>
+          <h3 class="text-h3 mb-12">Top Creator Earnings</h3>
+          <div style="display:flex;flex-direction:column;gap:var(--space-16);margin-top:var(--space-20)">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--space-12);border-bottom:1px solid var(--border-hairline)">
+              <span style="font-size:.875rem;color:var(--fg-secondary)">Riya Ahmed — Video Editor</span>
+              <span style="font-weight:700;color:#4ade80">৳45,000/mo</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--space-12);border-bottom:1px solid var(--border-hairline)">
+              <span style="font-size:.875rem;color:var(--fg-secondary)">Sadia Islam — Motion Artist</span>
+              <span style="font-weight:700;color:#4ade80">৳62,000/mo</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:var(--space-12);border-bottom:1px solid var(--border-hairline)">
+              <span style="font-size:.875rem;color:var(--fg-secondary)">Karim Hassan — Designer</span>
+              <span style="font-weight:700;color:#4ade80">৳38,000/mo</span>
+            </div>
+            <div style="font-size:.8rem;color:var(--fg-tertiary);font-style:italic">Top 10% of creators. Results vary by activity and skill level.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-block fade-up">
+      <div class="blob-container" style="opacity:.5"><div class="blob blob-1" style="opacity:.07;background:#7c3aed"></div></div>
+      <div style="position:relative;z-index:1">
+        <h2 class="text-h1 mb-16">Ready to hire your first creator?</h2>
+        <p class="text-body mb-32" style="max-width:440px;margin:0 auto var(--space-32)">Register your business, post a brief, and get matched with the right creative talent within 24 hours.</p>
+        <a href="contact.html" class="btn btn-primary btn-lg">Post a Brief →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="nav-logo" style="font-size:1.1rem"><span class="nav-logo-mark">N</span>Nimikh</a><p>Your complete digital growth partner — software, marketing, and creative talent under one roof.</p></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services/software.html">Software Development</a></li><li><a href="services/marketing.html">Growth Marketing</a></li><li><a href="services/creative.html">Creative Studio</a></li><li><a href="marketplace.html">Creator Marketplace</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="faq.html">FAQ</a></li></ul></div>
+    <div class="footer-col"><h4>Connect</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="mailto:hello@nimikh.com">hello@nimikh.com</a></li><li><a href="#">Facebook</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Nimikh. All rights reserved.</span><div class="footer-social"><a href="#">Facebook</a><a href="#">Instagram</a><a href="#">LinkedIn</a></div></div>
+</div></footer>
+<script src="js/main.js"></script>
+</body>
+</html>

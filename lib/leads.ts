@@ -88,3 +88,15 @@ export async function markLeadHandled(id: string, handled: boolean): Promise<boo
   const res = await db.collection(COLLECTIONS.leads).updateOne({ _id: new ObjectId(id) }, { $set: { handled } });
   return res.matchedCount > 0;
 }
+
+/** Fetch a single lead by id — used by the "Convert to client" server action. */
+export async function getLead(id: string): Promise<Lead | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const { ObjectId } = await import('mongodb');
+  try {
+    return await db.collection<Lead>(COLLECTIONS.leads).findOne({ _id: new ObjectId(id) });
+  } catch {
+    return null;
+  }
+}

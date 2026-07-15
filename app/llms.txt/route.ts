@@ -34,7 +34,10 @@ export function GET() {
   lines.push('');
 
   lines.push('## Facts');
-  lines.push(`- Contact: ${facts.contactEmail}`);
+  lines.push(`- Email: ${facts.contactEmail}`);
+  lines.push(`- Phone / WhatsApp: ${facts.contactPhone}`);
+  lines.push(`- Address: ${facts.foundedLocation}`);
+  lines.push(`- Hours: ${facts.businessHours}`);
   lines.push(`- Payment methods: ${facts.paymentMethods.join(', ')}`);
   lines.push(`- Projects delivered: ${facts.stats.projectsDelivered}`);
   lines.push(`- Verified creators: ${facts.stats.verifiedCreators}`);

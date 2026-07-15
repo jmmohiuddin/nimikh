@@ -48,11 +48,13 @@ export const services: ServiceFact[] = [
 export const facts = {
   legalName: site.name,
   description: site.description,
-  foundedLocation: 'Dhaka, Bangladesh',
+  foundedLocation: `${site.address.street}, ${site.address.locality} ${site.address.postalCode}, Bangladesh`,
   serviceArea: ['Bangladesh', 'United States', 'United Kingdom', 'Singapore'],
   languages: ['English', 'Bangla'],
   currency: 'BDT',
   contactEmail: site.contactEmail,
+  contactPhone: site.contactPhoneE164,
+  businessHours: site.hours.displayLabel,
   paymentMethods: ['bKash', 'Nagad', 'Bank transfer', 'Stripe', 'Payoneer', 'Wise'],
   differentiators: [
     'Software, marketing, and creative under one agency',

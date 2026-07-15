@@ -6,7 +6,7 @@ import { ScrollProgress } from './(shared)/ScrollProgress';
 import { ScrollReveal } from './(shared)/ScrollReveal';
 import { SiteFooter } from './(shared)/SiteFooter';
 import { SiteNav } from './(shared)/SiteNav';
-import { graph, organization, professionalService, webSite } from '@/lib/schema';
+import { graph, localBusiness, organization, professionalService, webSite } from '@/lib/schema';
 import { site } from '@/lib/site';
 import './globals.css';
 
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Site-wide entity graph (NIM-011): one JSON-LD blob, stable @ids.
             Renders on every page, including admin — harmless there (admin
             is robots-disallowed), and keeps this layout statically renderable. */}
-        <JsonLd data={graph(organization(), webSite(), professionalService())} />
+        <JsonLd data={graph(organization(), localBusiness(), webSite(), professionalService())} />
         {/* SiteNav, Breadcrumbs, SiteFooter each self-suppress on /admin
             via usePathname — that keeps the layout static (no headers() call)
             while avoiding double-chrome on the admin surface. */}

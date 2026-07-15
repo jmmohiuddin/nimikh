@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
 import { listLeads, markLeadHandled } from '@/lib/leads';
 
@@ -65,13 +66,22 @@ export default async function AdminLeadsPage() {
                     </div>
                   </div>
                   {id ? (
-                    <form action={toggleHandledAction}>
-                      <input type="hidden" name="id" value={id} />
-                      <input type="hidden" name="handled" value={l.handled ? 'false' : 'true'} />
-                      <button type="submit" className="btn btn-ghost btn-sm">
-                        {l.handled ? 'Mark open' : 'Mark handled'}
-                      </button>
-                    </form>
+                    <div style={{ display: 'flex', gap: 'var(--space-8)' }}>
+                      <Link
+                        href={`/admin/clients/new?fromLeadId=${id}`}
+                        className="btn btn-ghost btn-sm"
+                        title="Create a new client record pre-filled from this lead"
+                      >
+                        Convert to client →
+                      </Link>
+                      <form action={toggleHandledAction}>
+                        <input type="hidden" name="id" value={id} />
+                        <input type="hidden" name="handled" value={l.handled ? 'false' : 'true'} />
+                        <button type="submit" className="btn btn-ghost btn-sm">
+                          {l.handled ? 'Mark open' : 'Mark handled'}
+                        </button>
+                      </form>
+                    </div>
                   ) : null}
                 </div>
                 <p className="text-body text-sm mt-16" style={{ whiteSpace: 'pre-wrap' }}>{l.message}</p>

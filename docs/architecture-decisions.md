@@ -17,18 +17,27 @@ tripwire that would flip the choice.
 ## ADR-01 — Marketing-site subset in this repo, marketplace in a future repo
 
 **Decision.** Keep this repo as the marketing site. Implement leads, feedback,
-content externalization, and a single-admin content-viewing surface here. Do NOT
-build a creator portal, marketplace transactions, real-time messaging, or project
-management in this repo — those belong to a future `nimikh-platform` repo.
+content externalization, admin-side CRM (clients) and admin-side marketplace CMS
+(creator directory) here. Do NOT build customer-facing portals (creators logging
+in to their own dashboard, clients logging in to see project status),
+marketplace transactions, real-time messaging, or project management in this
+repo — those belong to a future `nimikh-platform` repo.
 
 **Why.** The marketing site's LCP/CLS/TBT budgets (spec §NIM-045) are
-incompatible with an in-repo admin dashboard's JS payload. A marketplace product
-deserves its own runtime, DB, deploy pipeline, and on-call rotation. Bundling
-them collapses blast-radius protection.
+incompatible with a customer-facing portal's JS payload and multi-user auth
+surface. A marketplace product deserves its own runtime, DB, deploy pipeline,
+and on-call rotation. Admin-only CRUD is a different story — it runs
+server-rendered under the same single-admin cookie session and edits the same
+data the public pages read, so it collapses cleanly into this repo.
 
-**Tripwire that flips it.** When the marketplace is a serious product (paying
-creators, transactional flows), extract it to its own repo — do not extend this
-one.
+**The line.** In-scope here: any surface Mohiuddin uses server-side to
+manage internal data. Out-of-scope: any surface a creator or client logs into
+themselves. When the marketplace becomes a real product with transactional
+flows or multi-user auth, extract it — do not extend this one.
+
+**Tripwire.** First feature that needs a non-admin user account (creator
+onboarding form with password, client project-status view, etc.) is the signal
+to spin up `nimikh-platform` rather than adding a role check here.
 
 ---
 

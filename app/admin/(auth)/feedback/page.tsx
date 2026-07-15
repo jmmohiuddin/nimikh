@@ -1,6 +1,8 @@
+import type { Metadata } from 'next';
 import { listFeedback } from '@/lib/feedback';
 
 export const dynamic = 'force-dynamic';
+export const metadata: Metadata = { title: 'Feedback' };
 
 function fmt(d: Date) {
   return new Intl.DateTimeFormat('en-GB', {

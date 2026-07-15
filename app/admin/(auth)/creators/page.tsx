@@ -1,8 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
 import { CREATOR_STATUS, type CreatorStatus, listCreators, setCreatorStatus } from '@/lib/creators';
 
 export const dynamic = 'force-dynamic';
+export const metadata: Metadata = { title: 'Creators' };
 
 async function statusAction(formData: FormData) {
   'use server';

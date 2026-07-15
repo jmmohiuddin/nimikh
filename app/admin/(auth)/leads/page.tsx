@@ -1,8 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
 import { listLeads, markLeadHandled } from '@/lib/leads';
 
 export const dynamic = 'force-dynamic';
+export const metadata: Metadata = { title: 'Leads' };
 
 async function toggleHandledAction(formData: FormData) {
   'use server';

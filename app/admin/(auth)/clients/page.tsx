@@ -1,8 +1,10 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
 import { CLIENT_STATUS, type ClientStatus, listClients, setClientArchived } from '@/lib/clients';
 
 export const dynamic = 'force-dynamic';
+export const metadata: Metadata = { title: 'Clients' };
 
 async function toggleArchivedAction(formData: FormData) {
   'use server';

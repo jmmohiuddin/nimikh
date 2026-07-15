@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FilterableGrid } from '../(shared)/FilterableGrid';
 import { Counter } from '../(shared)/Counter';
+import { MARKETPLACE_FILTERS, type MarketplaceCreator } from '@/content/marketplace';
+import { listMarketplaceCreators } from '@/lib/creators';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -11,40 +13,16 @@ export const metadata: Metadata = {
   alternates: { canonical: absoluteUrl('/marketplace') },
 };
 
-type Creator = {
-  name: string;
-  role: string;
-  initial: string;
-  bg: string;
-  chips: string[];
-  rate: string;
-  rating: string;
-  reviews: number;
-  emoji: string;
-  category: string;
-};
+// Adapter (ADR-01/ADR-04): admin-published DB records if present, seed data
+// otherwise. Either way we render the same shape, so this page has no idea
+// where the data came from — future migrations (Contentful, etc.) swap the
+// resolver, not the page.
+export const revalidate = 300;
 
-const filters = [
-  { value: 'all', label: 'All Creators' },
-  { value: 'video', label: 'Video Editing' },
-  { value: 'design', label: 'Graphic Design' },
-  { value: 'motion', label: 'Motion Graphics' },
-  { value: 'photo', label: 'Photography' },
-  { value: 'copy', label: 'Copywriting' },
-];
+const filters = [...MARKETPLACE_FILTERS];
 
-const creators: Creator[] = [
-  { name: 'Riya Ahmed', role: 'Video Editor & Content Creator', initial: 'R', bg: 'linear-gradient(135deg,#5e6ad2,#7c3aed)', chips: ['Reels', 'TikTok', 'Hooks'], rate: 'From ৳5,000', rating: '4.9', reviews: 48, emoji: '🎬', category: 'video' },
-  { name: 'Sadia Islam', role: 'Motion Graphics Artist', initial: 'S', bg: 'linear-gradient(135deg,#ec4899,#7c3aed)', chips: ['After Effects', 'Logo Anim'], rate: 'From ৳8,000', rating: '5.0', reviews: 32, emoji: '✨', category: 'motion' },
-  { name: 'Karim Hassan', role: 'Brand Designer', initial: 'K', bg: 'linear-gradient(135deg,#0ea5e9,#5e6ad2)', chips: ['Logos', 'Brand Kits', 'Social'], rate: 'From ৳3,500', rating: '4.8', reviews: 61, emoji: '🎨', category: 'design' },
-  { name: 'Arif Hossain', role: 'Commercial Photographer', initial: 'A', bg: 'linear-gradient(135deg,#f59e0b,#ef4444)', chips: ['Products', 'Lifestyle', 'Events'], rate: 'From ৳8,000', rating: '4.9', reviews: 27, emoji: '📸', category: 'photo' },
-  { name: 'Nusrat Jahan', role: 'UGC Creator & Presenter', initial: 'N', bg: 'linear-gradient(135deg,#10b981,#0ea5e9)', chips: ['UGC Ads', 'Reviews', 'Unboxing'], rate: 'From ৳4,000', rating: '4.7', reviews: 55, emoji: '🎥', category: 'video' },
-  { name: 'Tahsin Rahman', role: 'Illustration & Digital Art', initial: 'T', bg: 'linear-gradient(135deg,#7c3aed,#ec4899)', chips: ['Illustration', 'Posters', 'Characters'], rate: 'From ৳4,500', rating: '4.9', reviews: 38, emoji: '🖌️', category: 'design' },
-  { name: 'Fatima Akter', role: 'Copywriter & Content Strategist', initial: 'F', bg: 'linear-gradient(135deg,#5e6ad2,#10b981)', chips: ['Ad Copy', 'Bangla', 'Blogs'], rate: 'From ৳1,500', rating: '4.8', reviews: 72, emoji: '✍️', category: 'copy' },
-  { name: 'Mehedi Hasan', role: '2D Animator & Motion Artist', initial: 'M', bg: 'linear-gradient(135deg,#ef4444,#f59e0b)', chips: ['Explainers', 'Ads', '2D Anim'], rate: 'From ৳10,000', rating: '4.9', reviews: 19, emoji: '🎞️', category: 'motion' },
-];
-
-export default function MarketplacePage() {
+export default async function MarketplacePage() {
+  const creators: MarketplaceCreator[] = await listMarketplaceCreators();
   return (
     <>
       <section className="page-hero">

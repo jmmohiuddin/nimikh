@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
@@ -6,6 +7,7 @@ import { createClient } from '@/lib/clients';
 import { getLead } from '@/lib/leads';
 
 export const dynamic = 'force-dynamic';
+export const metadata: Metadata = { title: 'New client' };
 
 function parseFormData(formData: FormData) {
   const servicesRaw = String(formData.get('services') ?? '').trim();

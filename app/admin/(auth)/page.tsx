@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { countClientsByStatus } from '@/lib/clients';
 import { countCreatorsByStatus } from '@/lib/creators';
@@ -6,6 +7,10 @@ import { listLeads } from '@/lib/leads';
 import { getDb } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
+// Explicit prefix — the (auth) layout's title.template doesn't reach this
+// direct sibling page (Next 15 metadata quirk); nested pages under
+// /admin/leads etc. inherit the "Admin · %s" template just fine.
+export const metadata: Metadata = { title: 'Admin · Overview' };
 
 export default async function AdminDashboard() {
   const db = await getDb();

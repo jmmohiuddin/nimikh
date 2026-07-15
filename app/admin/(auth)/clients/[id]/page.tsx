@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
@@ -7,6 +8,12 @@ import { deleteClient, getClient, updateClient } from '@/lib/clients';
 export const dynamic = 'force-dynamic';
 
 type Params = { params: Promise<{ id: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> };
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const client = await getClient(id);
+  return { title: client?.company ?? 'Client' };
+}
 
 function parseFormData(formData: FormData) {
   const servicesRaw = String(formData.get('services') ?? '').trim();

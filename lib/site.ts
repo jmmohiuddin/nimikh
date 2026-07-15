@@ -13,7 +13,29 @@ export const site = {
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
     'https://nimikh.com',
   locale: 'en-BD',
-  contactEmail: 'hello@nimikh.com',
+  /**
+   * Canonical contact. Sourced from
+   * Nimikh-Execution-Kit/05-website-copy/about-team-contact.md. All
+   * mailto: links, JSON-LD contactPoint, llms.txt, and the /contact page
+   * read from here — change here, changes everywhere.
+   */
+  contactEmail: 'hey@nimikh.com',
+  contactPhoneE164: '+8801335857104',
+  contactPhoneDisplay: '+880 1335 857104',
+  address: {
+    street: 'Road 1, Building No 30, Dhaka Uddan, Mohammadpur',
+    locality: 'Dhaka',
+    postalCode: '1207',
+    country: 'BD',
+  },
+  /** Opening hours in schema.org OpeningHoursSpecification format. */
+  hours: {
+    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'] as const,
+    opens: '09:00',
+    closes: '19:00',
+    timeZone: 'Asia/Dhaka',
+    displayLabel: 'Sunday – Thursday, 09:00 – 19:00 BST',
+  },
   /**
    * Public social/profile URLs. These become schema.org `sameAs` on the
    * Organization node, which is how Google associates the brand with its

@@ -5,6 +5,13 @@ import { redirect } from 'next/navigation';
 import { SESSION_COOKIE, verifySessionToken } from '@/lib/session';
 
 export const metadata: Metadata = {
+  // Every admin page sets its own `title` string; template makes them
+  // read "Admin · <page> — Nimikh" in the browser tab. `default` fires
+  // when a page omits a title, so the tab still identifies as admin.
+  title: {
+    template: 'Admin · %s — Nimikh',
+    default: 'Admin — Nimikh',
+  },
   robots: { index: false, follow: false },
 };
 

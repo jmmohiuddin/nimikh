@@ -84,8 +84,11 @@ export default async function ContactPage({
                   <div className="contact-icon" aria-hidden="true">💬</div>
                   <div>
                     <div style={{ fontWeight: 590, fontSize: '.9rem', marginBottom: 4 }}>WhatsApp</div>
-                    <a href="https://wa.me/8801XXXXXXXXX" style={{ color: 'var(--interactive-action)', fontSize: '.875rem' }}>
-                      +880 1XXX-XXXXXX
+                    <a
+                      href={`https://wa.me/${site.contactPhoneE164.replace('+', '')}`}
+                      style={{ color: 'var(--interactive-action)', fontSize: '.875rem' }}
+                    >
+                      {site.contactPhoneDisplay}
                     </a>
                     <div style={{ fontSize: '.75rem', color: 'var(--fg-tertiary)', marginTop: 2 }}>Typically replies within 2 hours</div>
                   </div>
@@ -94,7 +97,8 @@ export default async function ContactPage({
                   <div className="contact-icon" aria-hidden="true">📍</div>
                   <div>
                     <div style={{ fontWeight: 590, fontSize: '.9rem', marginBottom: 4 }}>Location</div>
-                    <div style={{ fontSize: '.875rem', color: 'var(--fg-secondary)' }}>Dhaka, Bangladesh</div>
+                    <div style={{ fontSize: '.875rem', color: 'var(--fg-secondary)' }}>{site.address.street}</div>
+                    <div style={{ fontSize: '.875rem', color: 'var(--fg-secondary)' }}>{site.address.locality} {site.address.postalCode}, Bangladesh</div>
                     <div style={{ fontSize: '.75rem', color: 'var(--fg-tertiary)', marginTop: 2 }}>Remote-first. We work with clients nationwide.</div>
                   </div>
                 </div>
@@ -102,7 +106,7 @@ export default async function ContactPage({
                   <div className="contact-icon" aria-hidden="true">🕐</div>
                   <div>
                     <div style={{ fontWeight: 590, fontSize: '.9rem', marginBottom: 4 }}>Business Hours</div>
-                    <div style={{ fontSize: '.875rem', color: 'var(--fg-secondary)' }}>Saturday – Thursday, 9am – 7pm BST</div>
+                    <div style={{ fontSize: '.875rem', color: 'var(--fg-secondary)' }}>{site.hours.displayLabel}</div>
                   </div>
                 </div>
               </div>

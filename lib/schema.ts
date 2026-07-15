@@ -24,6 +24,7 @@ export function organization(): JsonLdNode {
     url: site.url,
     description: site.description,
     email: site.contactEmail,
+    telephone: site.contactPhoneE164,
     slogan: site.tagline,
     // `sameAs` links the brand to its social profiles for Google's
     // knowledge panel. Omitted entirely when no profiles are configured —
@@ -31,13 +32,16 @@ export function organization(): JsonLdNode {
     ...(site.socials.length > 0 ? { sameAs: site.socials } : {}),
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Dhaka',
-      addressCountry: 'BD',
+      streetAddress: site.address.street,
+      addressLocality: site.address.locality,
+      postalCode: site.address.postalCode,
+      addressCountry: site.address.country,
     },
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
       email: site.contactEmail,
+      telephone: site.contactPhoneE164,
       availableLanguage: ['en', 'bn'],
     },
   };
@@ -51,6 +55,42 @@ export function webSite(): JsonLdNode {
     url: site.url,
     publisher: { '@id': ORG_ID },
     inLanguage: 'en',
+  };
+}
+
+/**
+ * LocalBusiness node. This is the schema that unlocks Google local-search
+ * features (map pack, "near me" queries, business panel with hours). The
+ * `address`, `telephone`, and `openingHoursSpecification` are what
+ * Google actually uses to fill those surfaces, so keep them accurate.
+ */
+export function localBusiness(): JsonLdNode {
+  return {
+    '@type': 'LocalBusiness',
+    '@id': `${site.url}/#localbusiness`,
+    name: site.name,
+    url: site.url,
+    parentOrganization: { '@id': ORG_ID },
+    description: site.description,
+    telephone: site.contactPhoneE164,
+    email: site.contactEmail,
+    priceRange: '৳৳',
+    areaServed: ['BD', 'US', 'GB', 'SG'],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.address.street,
+      addressLocality: site.address.locality,
+      postalCode: site.address.postalCode,
+      addressCountry: site.address.country,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [...site.hours.days],
+        opens: site.hours.opens,
+        closes: site.hours.closes,
+      },
+    ],
   };
 }
 

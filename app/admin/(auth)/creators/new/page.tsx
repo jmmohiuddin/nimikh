@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { revalidatePath } from 'next/cache';
@@ -5,6 +6,7 @@ import { CreatorForm } from '../CreatorForm';
 import { createCreator } from '@/lib/creators';
 
 export const dynamic = 'force-dynamic';
+export const metadata: Metadata = { title: 'New creator' };
 
 function parseFormData(formData: FormData) {
   const chipsRaw = String(formData.get('chips') ?? '').trim();

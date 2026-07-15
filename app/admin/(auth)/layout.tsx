@@ -44,6 +44,8 @@ export default async function AuthedAdminLayout({ children }: { children: React.
               style={{ display: 'flex', gap: 'var(--space-16)', fontSize: '.875rem' }}
             >
               <Link href="/admin/leads" style={{ color: 'var(--fg-secondary)' }}>Leads</Link>
+              <Link href="/admin/clients" style={{ color: 'var(--fg-secondary)' }}>Clients</Link>
+              <Link href="/admin/creators" style={{ color: 'var(--fg-secondary)' }}>Creators</Link>
               <Link href="/admin/feedback" style={{ color: 'var(--fg-secondary)' }}>Feedback</Link>
             </nav>
           </div>

@@ -7,9 +7,11 @@ import { faqPage, graph } from '@/lib/schema';
 import { absoluteUrl, site } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  // No "Nimikh" here: the root layout template appends " — Nimikh" to every
+  // nested segment's title, so including the brand would double it.
+  title: 'Contact Us — Get a Free Software or Marketing Quote',
   description:
-    'Get in touch with Nimikh. Start a project, request a quote, or apply to join our creator marketplace.',
+    'Tell us what you need and get a quote within 24 hours. Custom software, digital marketing, or creative work for your business in Bangladesh or the UAE.',
   alternates: { canonical: absoluteUrl('/contact') },
 };
 

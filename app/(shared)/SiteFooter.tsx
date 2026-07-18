@@ -77,8 +77,8 @@ export function SiteFooter() {
               </Link>
             ))}
             {social.map((s) => (
-              <a key={s} href="#">
-                {s}
+              <a key={s.href} href={s.href} target="_blank" rel="noopener me">
+                {s.label}
               </a>
             ))}
           </div>

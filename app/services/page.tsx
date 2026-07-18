@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Services',
+  title: 'Software Development & Digital Marketing Services',
   description:
-    'Nimikh offers software development, growth marketing, and creative production — three services, one agency, zero compromise.',
+    'Custom software, digital marketing, and creative production for small and medium businesses in Bangladesh and the UAE — one agency, SMB pricing, no enterprise retainers.',
   alternates: { canonical: absoluteUrl('/services') },
 };
 

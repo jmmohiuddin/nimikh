@@ -1,13 +1,32 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { JsonLd } from '../../(shared)/JsonLd';
+import { graph, service } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Creative Studio',
+  title: 'Video Production & Graphic Design Services in Dhaka',
   description:
-    'Short-form video, motion graphics, graphic design, and photography. Nimikh’s creative studio and creator marketplace.',
+    'Short-form video, motion graphics, brand identity, and social media design for small businesses in Bangladesh. In-house studio plus 240+ verified creators, from ৳1,500.',
   alternates: { canonical: absoluteUrl('/services/creative') },
 };
+
+const serviceSchema = service({
+  name: 'Creative Production',
+  path: '/services/creative',
+  description:
+    'Short-form video production, motion graphics, graphic design, brand identity, and photography for small and medium businesses.',
+  serviceType: 'Creative Services',
+  offerings: [
+    'Short-Form Video Production',
+    'Motion Graphics',
+    'Graphic Design',
+    'Brand Identity Design',
+    'Social Media Content Design',
+    'Product Photography',
+  ],
+  startingPriceBDT: 1500,
+});
 
 const creatorPreview = [
   { name: 'Riya Ahmed', role: 'Video Editor & Content Creator', initial: 'R', bg: 'linear-gradient(135deg,#5e6ad2,#7c3aed)', chips: ['Reels', 'TikTok', 'Hooks'], rate: '৳5,000+', rating: '★ 4.9' },
@@ -18,6 +37,7 @@ const creatorPreview = [
 export default function CreativePage() {
   return (
     <>
+      <JsonLd data={graph(serviceSchema)} />
       <section className="page-hero">
         <div className="blob-container" aria-hidden="true">
           <div className="blob blob-1" style={{ opacity: .06, background: '#7c3aed' }} />
@@ -31,10 +51,10 @@ export default function CreativePage() {
           <h1 className="text-display fade-up d1" style={{ maxWidth: 680 }}>
             Content that <span className="text-indigo">stops the scroll</span> and starts the sale.
           </h1>
-          <p className="text-body mt-24 fade-up d2" style={{ maxWidth: 520, fontSize: '1.1rem' }}>
-            From viral short-form videos to polished brand identities — our creative studio
-            and marketplace of 240+ verified local artists deliver content your audience
-            actually engages with.
+          <p className="text-body mt-24 fade-up d2" style={{ maxWidth: 560, fontSize: '1.1rem' }}>
+            Video production, motion graphics, graphic design, and brand identity for small
+            businesses in Bangladesh — delivered by our in-house creative studio in Dhaka
+            and a marketplace of 240+ verified local artists. Projects from ৳1,500.
           </p>
           <div style={{ display: 'flex', gap: 'var(--space-12)', marginTop: 'var(--space-32)', flexWrap: 'wrap' }} className="fade-up d3">
             <Link href="/marketplace" className="btn btn-primary btn-lg">Browse Creators →</Link>

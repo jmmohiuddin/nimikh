@@ -4,9 +4,10 @@ import { team } from '@/content/team';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'About',
+  // Brand omitted deliberately — the root layout template appends " — Nimikh".
+  title: 'About Us — Software & Marketing Agency in Dhaka',
   description:
-    'Learn about Nimikh — our mission, our team, and why we built a digital agency that actually works for small businesses.',
+    'Nimikh is a software development and digital marketing agency in Dhaka, Bangladesh, built to serve small and medium businesses that cannot afford enterprise agency retainers.',
   alternates: { canonical: absoluteUrl('/about') },
 };
 

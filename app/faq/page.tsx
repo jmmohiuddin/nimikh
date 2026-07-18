@@ -6,9 +6,9 @@ import { faqPage, graph } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'FAQ',
+  title: 'Frequently Asked Questions About Our Services',
   description:
-    'Frequently asked questions about Nimikh’s services, pricing, the creator marketplace, escrow, and how we work.',
+    'How much software costs, how long projects take, how escrow works, what payment methods we accept, and how we work with small businesses in Bangladesh.',
   alternates: { canonical: absoluteUrl('/faq') },
 };
 

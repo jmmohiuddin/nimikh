@@ -6,9 +6,9 @@ import { faqPage, graph } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: 'Software Development & Marketing Cost in Bangladesh',
   description:
-    'Transparent pricing for software development, marketing retainers, and creator marketplace. No hidden fees, no surprises.',
+    'What custom software and digital marketing actually cost in Bangladesh. Websites from ৳25,000, marketing retainers from ৳15,000, creator work from ৳1,500. Full BDT price list, no hidden fees.',
   alternates: { canonical: absoluteUrl('/pricing') },
 };
 

@@ -18,7 +18,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/admin/', '/admin', '/preview/', '/*?*'],
+        // Previously `/*?*`, which blocked every URL carrying a query string —
+        // including /contact?intent=…&role=…, a real, linkable route that
+        // app/contact/page.tsx reads via searchParams. Tracking params are
+        // already stripped at the edge in middleware.ts, so the blanket rule
+        // was defending against a problem that no longer exists while making
+        // a live page uncrawlable. Audit §5 (T1).
+        disallow: ['/api/', '/admin/', '/admin', '/preview/'],
       },
       ...LLM_BOTS.map((bot) => ({
         userAgent: bot,

@@ -1,13 +1,43 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { JsonLd } from '../../(shared)/JsonLd';
+import { graph, service } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
+/**
+ * Title targets the head commercial query ("custom software development
+ * company" + Bangladesh) rather than labelling the page. Description
+ * front-loads the system types SMBs actually search for — CRM, ERP, POS,
+ * inventory — which appeared nowhere on the site before. See
+ * docs/seo/01-technical-and-content-audit.md §4 and §6.
+ */
 export const metadata: Metadata = {
-  title: 'Software Development',
+  title: 'Custom Software Development Company in Bangladesh',
   description:
-    'Custom websites, e-commerce stores, and web applications built with modern technology. Nimikh delivers software that scales.',
+    'Affordable custom software for small and medium businesses — CRM, ERP, POS, inventory, HR and payroll systems, and business automation. Built in Dhaka from ৳25,000, with bKash, Nagad and courier integrations.',
   alternates: { canonical: absoluteUrl('/services/software') },
 };
+
+const serviceSchema = service({
+  name: 'Custom Software Development',
+  path: '/services/software',
+  description:
+    'Custom business software for small and medium businesses: CRM, ERP, POS, inventory management, HR and payroll, customer portals, dashboards, and workflow automation.',
+  serviceType: 'Custom Software Development',
+  offerings: [
+    'Custom CRM Development',
+    'ERP System Development',
+    'POS Software Development',
+    'Inventory Management Software',
+    'HR and Payroll Software',
+    'Business Process Automation',
+    'Custom Web Application Development',
+    'E-Commerce Development',
+    'Mobile App Development',
+    'API Integration',
+  ],
+  startingPriceBDT: 25000,
+});
 
 const process = [
   { n: '1', t: 'Discovery Call', b: '30-minute call to understand your goals, timeline, and budget.' },
@@ -26,6 +56,7 @@ const stack = [
 export default function SoftwarePage() {
   return (
     <>
+      <JsonLd data={graph(serviceSchema)} />
       <section className="page-hero">
         <div className="blob-container" aria-hidden="true">
           <div className="blob blob-1" style={{ opacity: .07 }} />
@@ -38,9 +69,15 @@ export default function SoftwarePage() {
           <h1 className="text-display fade-up d1" style={{ maxWidth: 700 }}>
             We engineer software your <span className="text-indigo">business runs on.</span>
           </h1>
-          <p className="text-body mt-24 fade-up d2" style={{ maxWidth: 520, fontSize: '1.1rem' }}>
-            From a landing page to a full SaaS platform — clean code, beautiful UI, and
-            reliable infrastructure. Delivered on time.
+          {/* Keyword-bearing lede (SEO §6): the H1 keeps doing the persuading,
+              this paragraph carries the terms buyers actually search — CRM, ERP,
+              POS, inventory, payroll, automation — none of which appeared
+              anywhere on the site before. Written for humans first. */}
+          <p className="text-body mt-24 fade-up d2" style={{ maxWidth: 560, fontSize: '1.1rem' }}>
+            Nimikh is a custom software development company in Dhaka, Bangladesh, building
+            the systems small and medium businesses actually run on — CRM, ERP, POS,
+            inventory management, HR and payroll, customer portals, and workflow
+            automation. Fixed scope, fixed price, from ৳25,000.
           </p>
           <div style={{ display: 'flex', gap: 'var(--space-12)', marginTop: 'var(--space-32)', flexWrap: 'wrap' }} className="fade-up d3">
             <Link href="/contact" className="btn btn-primary btn-lg">Start a Project →</Link>

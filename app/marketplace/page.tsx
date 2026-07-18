@@ -7,9 +7,9 @@ import { listMarketplaceCreators } from '@/lib/creators';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Creator Marketplace',
+  title: 'Hire Freelance Video Editors & Designers in Bangladesh',
   description:
-    'Browse 240+ verified local creators — video editors, graphic designers, motion artists — and hire them with escrow protection.',
+    'Browse 240+ verified local creators — video editors, graphic designers, motion artists — and hire them directly with escrow protection. Projects from ৳3,000.',
   alternates: { canonical: absoluteUrl('/marketplace') },
 };
 

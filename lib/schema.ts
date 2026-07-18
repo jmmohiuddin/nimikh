@@ -75,7 +75,7 @@ export function localBusiness(): JsonLdNode {
     telephone: site.contactPhoneE164,
     email: site.contactEmail,
     priceRange: '৳৳',
-    areaServed: ['BD', 'US', 'GB', 'SG'],
+    areaServed: ['BD', 'AE', 'US', 'GB', 'SG'],
     address: {
       '@type': 'PostalAddress',
       streetAddress: site.address.street,
@@ -102,7 +102,7 @@ export function professionalService(): JsonLdNode {
     url: site.url,
     parentOrganization: { '@id': ORG_ID },
     description: site.description,
-    areaServed: ['BD', 'US', 'GB', 'SG'],
+    areaServed: ['BD', 'AE', 'US', 'GB', 'SG'],
     priceRange: '৳৳',
     knowsAbout: [
       'Software development',
@@ -125,6 +125,80 @@ function offer(name: string, url: string): JsonLdNode {
   return {
     '@type': 'Offer',
     itemOffered: { '@type': 'Service', name, url, provider: { '@id': ORG_ID } },
+  };
+}
+
+export type ServiceInput = {
+  /** Public-facing service name, e.g. "Custom Software Development". */
+  name: string;
+  /** Site-relative path the service lives at, e.g. "/services/software". */
+  path: string;
+  description: string;
+  /**
+   * schema.org serviceType — the category term Google matches against.
+   * Keep this a recognised industry label, not marketing copy.
+   */
+  serviceType: string;
+  /** Concrete deliverables. Becomes an OfferCatalog of child services. */
+  offerings: string[];
+  /** Lowest real starting price in BDT. Omit rather than guess. */
+  startingPriceBDT?: number;
+};
+
+/**
+ * Service node for an individual service page (NIM-010 extension).
+ *
+ * Why this exists: `professionalService()` declares that Nimikh offers
+ * these services at the org level, but each /services/* page needs its
+ * own addressable node so Google can associate the page with the service
+ * entity rather than inferring it from body copy. `provider` points at
+ * the shared ORG_ID so everything stays one graph.
+ *
+ * Deliberately omits aggregateRating — see docs/seo/01-technical-and-
+ * content-audit.md §7. Rating markup requires verifiable review data;
+ * inventing it risks a manual action.
+ */
+export function service(s: ServiceInput): JsonLdNode {
+  const url = absoluteUrl(s.path);
+  return {
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: s.name,
+    url,
+    description: s.description,
+    serviceType: s.serviceType,
+    provider: { '@id': ORG_ID },
+    areaServed: ['BD', 'AE', 'US', 'GB', 'SG'],
+    availableChannel: {
+      '@type': 'ServiceChannel',
+      serviceUrl: url,
+      servicePhone: site.contactPhoneE164,
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${s.name} services`,
+      itemListElement: s.offerings.map((o) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: o },
+      })),
+    },
+    ...(s.startingPriceBDT
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: s.startingPriceBDT,
+            priceCurrency: 'BDT',
+            priceSpecification: {
+              '@type': 'PriceSpecification',
+              minPrice: s.startingPriceBDT,
+              priceCurrency: 'BDT',
+              valueAddedTaxIncluded: false,
+            },
+            availability: 'https://schema.org/InStock',
+            url,
+          },
+        }
+      : {}),
   };
 }
 

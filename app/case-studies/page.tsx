@@ -4,9 +4,9 @@ import { Counter } from '../(shared)/Counter';
 import { absoluteUrl } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Case Studies',
+  title: 'Client Case Studies & Results',
   description:
-    'Real results for real businesses. See how Nimikh helped clients grow through software, marketing, and creative content.',
+    'How Nimikh helped Bangladeshi small businesses grow — e-commerce builds, ad campaigns, and custom systems, with the numbers behind each project.',
   alternates: { canonical: absoluteUrl('/case-studies') },
 };
 

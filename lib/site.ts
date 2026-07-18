@@ -7,7 +7,7 @@ export const site = {
   name: 'Nimikh',
   tagline: 'Build. Market. Create.',
   description:
-    'Nimikh is your complete digital growth partner — we build custom software, run high-performance marketing, and connect your brand with talented local creators.',
+    'Nimikh builds affordable custom software — CRM, ERP, POS, inventory and business automation systems — and runs performance marketing for small and medium businesses in Bangladesh and the UAE.',
   /** Canonical origin, no trailing slash. Override with NEXT_PUBLIC_SITE_URL for previews. */
   url:
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ??
@@ -42,7 +42,9 @@ export const site = {
    * profiles for a knowledge panel. Add real URLs as they go live — leave
    * empty rather than pointing at placeholders (a bad sameAs hurts trust).
    */
-  socials: [] as string[],
+  socials: [
+    'https://www.facebook.com/nimikh.technologies/',
+  ] as string[],
   /**
    * Search-engine ownership verification tokens. Paste the value Google
    * Search Console / Bing Webmaster gives you (env var so it isn't in the

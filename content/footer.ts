@@ -33,5 +33,13 @@ export const footerLegal: FooterLink[] = [
   { href: '/legal/security', label: 'Security' },
 ];
 
-/** Social platforms. Add real URLs to lib/site.ts `socials` when live. */
-export const footerSocial = ['Facebook', 'Instagram', 'LinkedIn', 'Twitter / X'] as const;
+/**
+ * Social profiles. Only list a platform once its profile is actually live —
+ * these previously rendered as `href="#"`, putting four dead links on every
+ * page of the site (audit §5, T4). Every URL added here should also go into
+ * `lib/site.ts` → `socials` so it emits as schema.org `sameAs`, which is how
+ * Google links the domain to the profile for Knowledge Panel purposes.
+ */
+export const footerSocial: FooterLink[] = [
+  { href: 'https://www.facebook.com/nimikh.technologies/', label: 'Facebook', external: true },
+];

@@ -22,7 +22,9 @@ export const pageEntries: SitemapEntry[] = [
   { path: '/pricing', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/contact', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/faq', priority: 0.6, changeFrequency: 'monthly' },
-  { path: '/feedback', priority: 0.4, changeFrequency: 'monthly' },
+  // /feedback is deliberately absent: it is noindex (see app/feedback/page.tsx)
+  // and listing a noindex URL in a sitemap sends Google a contradictory signal.
+  // Audit §5 (T3).
 ];
 
 /** Service pillars. Sub-pages match /services/[slug]. */

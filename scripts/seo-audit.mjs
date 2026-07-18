@@ -32,12 +32,16 @@ const INDEXABLE = [
   '/case-studies',
   '/contact',
   '/faq',
-  '/feedback',
   '/founders/mohiuddin',
   '/founders/maruf-shezad',
 ];
 
-const NOINDEX_OK = ['/legal/privacy', '/legal/terms', '/legal/security'];
+// Intentionally noindex. Legal pages are pending legal sign-off. /feedback
+// is a utility form with no search demand — kept crawlable (follow) so link
+// equity still flows, but out of the index so it can't outrank a commercial
+// page or eat crawl budget. See docs/seo/01-technical-and-content-audit.md
+// §5 (T3); it was moved out of INDEXABLE in the same change.
+const NOINDEX_OK = ['/legal/privacy', '/legal/terms', '/legal/security', '/feedback'];
 
 const failures = [];
 const titles = new Map();

@@ -3,8 +3,13 @@ import Link from 'next/link';
 import { Counter } from './(shared)/Counter';
 import { absoluteUrl, site } from '@/lib/site';
 
+/**
+ * Homepage title targets the primary commercial query rather than restating
+ * the brand tagline. Brand alone ranks for brand; it does not win category
+ * queries. Audit §6.
+ */
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.tagline}`,
+  title: `${site.name} — Affordable Software Development & Digital Marketing in Bangladesh`,
   description: site.description,
   alternates: { canonical: absoluteUrl('/') },
 };

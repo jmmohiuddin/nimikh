@@ -1,13 +1,38 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { JsonLd } from '../../(shared)/JsonLd';
+import { graph, service } from '@/lib/schema';
 import { absoluteUrl } from '@/lib/site';
 
+/**
+ * "Affordable" is the positioning wedge (audit §4) and a real search
+ * modifier in this market — it belongs in the title, not just the copy.
+ */
 export const metadata: Metadata = {
-  title: 'Growth Marketing',
+  title: 'Affordable Digital Marketing Agency in Bangladesh',
   description:
-    'Performance advertising, SEO, and social media management that drives real business results. Nimikh’s growth marketing team.',
+    'Facebook and Google Ads, SEO, social media, and lead generation for small businesses in Dhaka. Month-to-month retainers from ৳15,000 — no lock-in contracts.',
   alternates: { canonical: absoluteUrl('/services/marketing') },
 };
+
+const serviceSchema = service({
+  name: 'Digital Marketing',
+  path: '/services/marketing',
+  description:
+    'Performance marketing for small and medium businesses: Facebook Ads, Google Ads, SEO, social media management, lead generation, and marketing automation.',
+  serviceType: 'Digital Marketing',
+  offerings: [
+    'Facebook Ads Management',
+    'Google Ads Management',
+    'Search Engine Optimisation',
+    'Social Media Marketing',
+    'Lead Generation',
+    'Content Marketing',
+    'Marketing Automation',
+    'Performance Marketing',
+  ],
+  startingPriceBDT: 15000,
+});
 
 const cards = [
   {
@@ -78,6 +103,7 @@ const packages = [
 export default function MarketingPage() {
   return (
     <>
+      <JsonLd data={graph(serviceSchema)} />
       <section className="page-hero">
         <div className="blob-container" aria-hidden="true">
           <div className="blob blob-1" style={{ opacity: .07 }} />
@@ -91,9 +117,14 @@ export default function MarketingPage() {
           <h1 className="text-display fade-up d1" style={{ maxWidth: 700 }}>
             Marketing that earns its <span className="text-indigo">own budget.</span>
           </h1>
-          <p className="text-body mt-24 fade-up d2" style={{ maxWidth: 520, fontSize: '1.1rem' }}>
-            We run performance campaigns on Meta, Google, and TikTok — anchored to your
-            actual business KPIs. No jargon, no fluff. Just measurable growth.
+          {/* Keyword-bearing lede (SEO §6) — carries "digital marketing agency",
+              "Facebook Ads", "Google Ads", "SEO", "lead generation" and the
+              affordability modifier that is our positioning wedge. */}
+          <p className="text-body mt-24 fade-up d2" style={{ maxWidth: 560, fontSize: '1.1rem' }}>
+            Nimikh is an affordable digital marketing agency in Dhaka running Facebook Ads,
+            Google Ads, SEO, social media, and lead generation for small businesses —
+            anchored to your actual business KPIs, not vanity metrics. Retainers start at
+            ৳15,000 a month with no lock-in.
           </p>
           <div style={{ display: 'flex', gap: 'var(--space-12)', marginTop: 'var(--space-32)', flexWrap: 'wrap' }} className="fade-up d3">
             <Link href="/contact" className="btn btn-primary btn-lg">Start a Campaign →</Link>

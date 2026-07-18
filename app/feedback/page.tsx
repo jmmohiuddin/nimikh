@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   description:
     "Tell Nimikh what's working, what isn't, and what would make this site better. Every note reaches the team.",
   alternates: { canonical: absoluteUrl('/feedback') },
+  // Utility page with no search demand. Kept crawlable so link equity
+  // still flows, but out of the index so it doesn't dilute crawl budget
+  // or surface above a commercial page. Audit §5 (T3).
+  robots: { index: false, follow: true },
 };
 
 export default function FeedbackPage() {

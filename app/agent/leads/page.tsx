@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { revalidatePath } from 'next/cache';
 import Link from 'next/link';
-import { getSession } from '@/lib/auth';
+import { getSession, requireSession } from '@/lib/auth';
 import {
   addCallLog, getAgentLead, listAgentLeads, LEAD_STAGES, OPEN_STAGES,
   setLeadStage, type AgentLeadView, type LeadStage,
@@ -23,7 +23,10 @@ function fmt(d: Date | null | undefined) {
 }
 
 async function assertOwner(id: string): Promise<boolean> {
-  const session = (await getSession())!;
+  // A denied action (return false) is the right failure mode here, not a
+  // redirect — this runs inside a server action mid-mutation.
+  const session = await getSession();
+  if (!session) return false;
   const lead = await getAgentLead(id);
   return !!lead && lead.assignedAgentId === session.uid;
 }
@@ -52,7 +55,7 @@ async function logAction(formData: FormData) {
 
 export default async function AgentLeads({ searchParams }: { searchParams: Promise<{ stage?: string; q?: string }> }) {
   const q = await searchParams;
-  const session = (await getSession())!;
+  const session = await requireSession('/agent/leads');
   const db = await getDb();
   const stageFilter = (LEAD_STAGES as readonly string[]).includes(q.stage ?? '') ? (q.stage as LeadStage) : undefined;
   const search = (q.q ?? '').trim().toLowerCase();

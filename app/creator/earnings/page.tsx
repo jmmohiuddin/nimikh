@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { listPayments, summarize, taka, type PaymentStatus } from '@/lib/payments';
 import { PageHead, StatGrid, SectionCard, StatusBadge, type Tile } from '@/app/(shared)/dashboard/ui';
 import { BarChart } from '@/app/(shared)/dashboard/Charts';
@@ -13,7 +13,7 @@ function fmt(d: Date) {
 const tone: Record<PaymentStatus, 'green' | 'amber'> = { completed: 'green', pending: 'amber' };
 
 export default async function CreatorEarnings() {
-  const session = (await getSession())!;
+  const session = await requireSession('/creator/earnings');
   const [ledger, history] = await Promise.all([
     summarize({ creatorId: session.uid }),
     listPayments({ creatorId: session.uid, type: 'creator_payout', limit: 100 }),

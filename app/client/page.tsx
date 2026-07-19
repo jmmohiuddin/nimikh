@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { listProjects } from '@/lib/projects';
 import { getProjectFinance } from '@/lib/installments';
 import { listNotifications } from '@/lib/notifications';
@@ -21,7 +21,7 @@ function fmtWhen(d: Date) {
 }
 
 export default async function ClientOverview() {
-  const session = (await getSession())!;
+  const session = await requireSession('/client');
   const projects = await listProjects({ clientId: session.uid });
 
   if (projects.length === 0) {

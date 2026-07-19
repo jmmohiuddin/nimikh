@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { revalidatePath } from 'next/cache';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { addPortfolioItem, deletePortfolioItem, listPortfolio } from '@/lib/portfolio';
 import { PageHead, SectionCard } from '@/app/(shared)/dashboard/ui';
 
@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: 'Content' };
 
 async function addAction(formData: FormData) {
   'use server';
-  const session = (await getSession())!;
+  const session = await requireSession('/creator/content');
   const tags = String(formData.get('tags') ?? '').split(',').map((t) => t.trim()).filter(Boolean).slice(0, 8);
   await addPortfolioItem({
     creatorId: session.uid,
@@ -23,13 +23,13 @@ async function addAction(formData: FormData) {
 
 async function deleteAction(formData: FormData) {
   'use server';
-  const session = (await getSession())!;
+  const session = await requireSession('/creator/content');
   await deletePortfolioItem(String(formData.get('id') ?? ''), session.uid);
   revalidatePath('/creator/content');
 }
 
 export default async function CreatorContent() {
-  const session = (await getSession())!;
+  const session = await requireSession('/creator/content');
   const items = await listPortfolio(session.uid);
 
   return (

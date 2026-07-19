@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { resolveClientProject } from '@/lib/portal';
 import { DOC_CATEGORY_LABEL, groupVersions, listDocuments } from '@/lib/documents';
 import { PageHead, SectionCard } from '@/app/(shared)/dashboard/ui';
@@ -15,7 +15,7 @@ function fmtDate(d: Date) {
 
 export default async function ClientDocuments({ searchParams }: { searchParams: Promise<{ project?: string }> }) {
   const q = await searchParams;
-  const session = (await getSession())!;
+  const session = await requireSession('/client/documents');
   const { projects, current } = await resolveClientProject(session.uid, q.project);
   if (!current) notFound();
 

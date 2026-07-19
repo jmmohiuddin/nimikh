@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { resolveClientProject } from '@/lib/portal';
 import { getProjectFinance, type DerivedState, type InstallmentView } from '@/lib/installments';
 import { taka } from '@/lib/payments';
@@ -25,7 +25,7 @@ const stateLabel: Record<DerivedState, string> = {
 
 export default async function ClientInstallments({ searchParams }: { searchParams: Promise<{ project?: string }> }) {
   const q = await searchParams;
-  const session = (await getSession())!;
+  const session = await requireSession('/client/installments');
   const { projects, current } = await resolveClientProject(session.uid, q.project);
   if (!current) notFound();
 

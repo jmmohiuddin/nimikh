@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { listPayments, summarize, taka } from '@/lib/payments';
 import { PageHead, StatGrid, SectionCard, type Tile } from '@/app/(shared)/dashboard/ui';
 import { BarChart, Meter } from '@/app/(shared)/dashboard/Charts';
@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Analytics' };
 
 export default async function CreatorAnalytics() {
-  const session = (await getSession())!;
+  const session = await requireSession('/creator/analytics');
   const [ledger, sales] = await Promise.all([
     summarize({ creatorId: session.uid }),
     listPayments({ creatorId: session.uid, type: 'customer_payment', limit: 500 }),

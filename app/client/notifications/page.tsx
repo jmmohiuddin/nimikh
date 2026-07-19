@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { revalidatePath } from 'next/cache';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { listNotifications, markAllRead, markNotificationRead, NOTIF_ICON } from '@/lib/notifications';
 import { PageHead, SectionCard } from '@/app/(shared)/dashboard/ui';
 
@@ -13,20 +13,20 @@ function fmtWhen(d: Date) {
 
 async function readAllAction() {
   'use server';
-  const session = (await getSession())!;
+  const session = await requireSession('/client/notifications');
   await markAllRead(session.uid);
   revalidatePath('/client/notifications');
 }
 
 async function readOneAction(formData: FormData) {
   'use server';
-  const session = (await getSession())!;
+  const session = await requireSession('/client/notifications');
   await markNotificationRead(String(formData.get('id') ?? ''), session.uid);
   revalidatePath('/client/notifications');
 }
 
 export default async function ClientNotifications() {
-  const session = (await getSession())!;
+  const session = await requireSession('/client/notifications');
   const notifs = await listNotifications(session.uid, 100);
   const unread = notifs.filter((n) => !n.read).length;
 

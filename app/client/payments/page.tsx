@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { listProjects } from '@/lib/projects';
 import { listInstallments } from '@/lib/installments';
 import { taka } from '@/lib/payments';
@@ -17,7 +17,7 @@ const methodLabel: Record<string, string> = {
 };
 
 export default async function ClientPayments() {
-  const session = (await getSession())!;
+  const session = await requireSession('/client/payments');
   const [projects, all] = await Promise.all([
     listProjects({ clientId: session.uid }),
     listInstallments({ clientId: session.uid, limit: 1000 }),

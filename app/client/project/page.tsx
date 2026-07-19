@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { resolveClientProject } from '@/lib/portal';
 import { PROJECT_STAGES, STAGE_LABEL, type ProjectStage } from '@/lib/projects';
 import { getProjectFinance } from '@/lib/installments';
@@ -21,7 +21,7 @@ function fmtDate(s?: string) {
 
 export default async function ClientProjectPage({ searchParams }: { searchParams: Promise<{ project?: string }> }) {
   const q = await searchParams;
-  const session = (await getSession())!;
+  const session = await requireSession('/client/project');
   const { projects, current } = await resolveClientProject(session.uid, q.project);
   if (!current) notFound();
 

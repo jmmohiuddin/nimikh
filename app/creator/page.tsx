@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { getUserById } from '@/lib/users';
 import { listPayments, summarize, taka } from '@/lib/payments';
 import { PageHead, StatGrid, SectionCard, type Tile } from '@/app/(shared)/dashboard/ui';
@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Overview' };
 
 export default async function CreatorOverview() {
-  const session = (await getSession())!;
+  const session = await requireSession('/creator');
   const [profile, ledger, recent] = await Promise.all([
     getUserById(session.uid),
     summarize({ creatorId: session.uid }),

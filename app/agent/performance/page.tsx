@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { conversionRate, countLeadsByStage, listAgentLeads } from '@/lib/agentLeads';
 import { summarize, taka } from '@/lib/payments';
 import { PageHead, StatGrid, SectionCard, type Tile } from '@/app/(shared)/dashboard/ui';
@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = { title: 'Performance' };
 
 export default async function AgentPerformance() {
-  const session = (await getSession())!;
+  const session = await requireSession('/agent/performance');
   const [counts, ledger, leads] = await Promise.all([
     countLeadsByStage(session.uid),
     summarize({ agentId: session.uid }),

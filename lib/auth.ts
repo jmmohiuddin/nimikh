@@ -90,6 +90,20 @@ export async function getSession(): Promise<SessionPayload | null> {
 }
 
 /**
+ * Read the session and redirect to /login if absent — the null-safe
+ * counterpart to `getSession()` for pages/actions nested under a layout
+ * that already called `requireRole()`. Belt-and-braces: layouts gate
+ * normal request traffic, but a page/server-action function can in
+ * principle be invoked without that layout re-running (e.g. framework
+ * prewarming), so leaf code should never blindly assert the cookie exists.
+ */
+export async function requireSession(currentPath: string): Promise<SessionPayload> {
+  const session = await getSession();
+  if (!session) redirect(`/login?next=${encodeURIComponent(currentPath)}`);
+  return session;
+}
+
+/**
  * Gate a server component/layout to a specific role. Redirects to /login
  * (preserving `next`) when unauthenticated, or to the caller's own home
  * when authenticated as the wrong role.

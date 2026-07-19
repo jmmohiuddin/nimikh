@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { resolveClientProject } from '@/lib/portal';
 import { addMessage, listMessages } from '@/lib/messages';
 import { createNotification } from '@/lib/notifications';
@@ -17,7 +17,7 @@ function fmtWhen(d: Date) {
 
 async function sendAction(formData: FormData) {
   'use server';
-  const session = (await getSession())!;
+  const session = await requireSession('/client/messages');
   const projectId = String(formData.get('projectId') ?? '');
   const body = String(formData.get('body') ?? '').trim();
   const attachmentUrl = String(formData.get('attachmentUrl') ?? '').trim();
@@ -32,7 +32,7 @@ async function sendAction(formData: FormData) {
 
 export default async function ClientMessages({ searchParams }: { searchParams: Promise<{ project?: string }> }) {
   const q = await searchParams;
-  const session = (await getSession())!;
+  const session = await requireSession('/client/messages');
   const { projects, current } = await resolveClientProject(session.uid, q.project);
   if (!current) notFound();
 

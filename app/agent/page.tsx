@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { conversionRate, countLeadsByStage, listAgentLeads, OPEN_STAGES } from '@/lib/agentLeads';
 import { summarize, taka } from '@/lib/payments';
 import { PageHead, StatGrid, SectionCard, StatusBadge, type Tile } from '@/app/(shared)/dashboard/ui';
@@ -20,7 +20,7 @@ function isPastOrToday(d: Date | null | undefined) {
 }
 
 export default async function AgentOverview() {
-  const session = (await getSession())!;
+  const session = await requireSession('/agent');
   const [counts, ledger, leads] = await Promise.all([
     countLeadsByStage(session.uid),
     summarize({ agentId: session.uid }),

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getSession } from '@/lib/auth';
+import { requireSession } from '@/lib/auth';
 import { listPayments, summarize, taka, COMMISSION_RATE, type PaymentStatus } from '@/lib/payments';
 import { PageHead, StatGrid, SectionCard, StatusBadge, type Tile } from '@/app/(shared)/dashboard/ui';
 import { BarChart } from '@/app/(shared)/dashboard/Charts';
@@ -13,7 +13,7 @@ function fmt(d: Date) {
 const tone: Record<PaymentStatus, 'green' | 'amber'> = { completed: 'green', pending: 'amber' };
 
 export default async function AgentCommissions() {
-  const session = (await getSession())!;
+  const session = await requireSession('/agent/commissions');
   const [ledger, history] = await Promise.all([
     summarize({ agentId: session.uid }),
     listPayments({ agentId: session.uid, type: 'agent_commission', limit: 200 }),

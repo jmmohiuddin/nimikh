@@ -15,9 +15,17 @@ import type { Role, SessionUser } from './users';
  * request. Dashboards that need fresh profile data fetch by `uid`.
  *
  * Secret: ADMIN_SESSION_SECRET (shared with the legacy admin session so
- * rotating it invalidates everything — the intended panic button). In
- * non-production a built-in dev secret is used so the platform is
- * log-in-able out of the box; production REQUIRES the env var.
+ * rotating it invalidates everything — the intended panic button).
+ *
+ * Fallback ladder when the env var is missing:
+ *   - dev/preview: built-in dev secret, always.
+ *   - production WITHOUT a database (pure demo mode): built-in demo secret.
+ *     Demo mode's accounts are public by design (documented in the README),
+ *     so a static signing key exposes nothing those accounts don't already;
+ *     and being static it verifies consistently across serverless instances,
+ *     which a per-boot random secret would not.
+ *   - production WITH a database: env var is REQUIRED. Real accounts and
+ *     real data must never run on a publicly-known signing key.
  */
 
 export const SESSION_COOKIE = 'nimikh_session';
@@ -30,8 +38,11 @@ function getSecret(): string {
   const s = process.env.ADMIN_SESSION_SECRET?.trim();
   if (s && s.length >= 16) return s;
   if (process.env.NODE_ENV !== 'production') return DEV_SECRET;
-  // In production with no configured secret, sessions cannot be minted or
-  // verified — treat as "auth unconfigured".
+  // Production demo mode (no DB): allow the static secret so the deployed
+  // site is log-in-able out of the box with the demo accounts.
+  if (!process.env.MONGODB_URI?.trim()) return DEV_SECRET;
+  // Production with a real database but no configured secret — refuse to
+  // mint or verify sessions; treat as "auth unconfigured".
   return '';
 }
 

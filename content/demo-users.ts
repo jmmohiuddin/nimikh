@@ -3,8 +3,8 @@
  *
  * When MONGODB_URI is not set, the `users` collection can't exist, so the
  * platform would have nobody to log in as. These demo accounts let anyone
- * evaluate the full role-based experience out-of-the-box. The login page
- * surfaces these credentials in demo mode.
+ * evaluate the full role-based experience out-of-the-box. The credentials
+ * are documented in README.md (never shown in the UI).
  *
  * Passwords are stored in the `plain$…` demo format understood by
  * lib/auth/password.ts. The moment a real database is provisioned and a
@@ -60,10 +60,3 @@ export const demoUsers: DemoUser[] = [
     status: 'active',
   },
 ];
-
-/** Shown on the login page when running without a database. */
-export const DEMO_CREDENTIALS = demoUsers.map((u) => ({
-  role: u.role,
-  email: u.email,
-  password: u.password,
-}));

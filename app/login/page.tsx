@@ -4,8 +4,6 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { authenticate, ROLE_HOME } from '@/lib/users';
 import { getSession, isAuthConfigured, mintSession, SESSION_COOKIE, SESSION_MAX_AGE } from '@/lib/auth';
-import { getDb } from '@/lib/db';
-import { DEMO_CREDENTIALS } from '@/content/demo-users';
 
 export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
@@ -54,11 +52,9 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const session = await getSession();
   if (session) redirect(ROLE_HOME[session.role]);
 
-  const db = await getDb();
-  const demoMode = !db;
   const error =
     params.e === 'bad' ? 'Incorrect email or password.' :
-    params.e === 'unconfigured' ? 'Authentication is not configured. Set ADMIN_SESSION_SECRET (min 16 chars) in the environment.' :
+    params.e === 'unconfigured' ? 'Sign-in is temporarily unavailable. Please contact the site administrator.' :
     null;
 
   return (
@@ -91,24 +87,6 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
             <button type="submit" className="btn btn-primary w-full" style={{ justifyContent: 'center' }}>Sign in</button>
           </form>
 
-          {demoMode ? (
-            <div style={{ marginTop: 'var(--space-24)', paddingTop: 'var(--space-20)', borderTop: '1px solid var(--border-hairline)' }}>
-              <div style={{ fontSize: '.72rem', textTransform: 'uppercase', letterSpacing: '.08em', color: 'var(--fg-tertiary)', marginBottom: 10 }}>
-                Demo mode — no database connected
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                {DEMO_CREDENTIALS.map((c) => (
-                  <div key={c.role} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '.8rem', color: 'var(--fg-secondary)' }}>
-                    <span style={{ textTransform: 'capitalize', color: 'var(--fg-primary)', fontWeight: 600 }}>{c.role}</span>
-                    <code style={{ fontSize: '.78rem' }}>{c.email} · {c.password}</code>
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm" style={{ color: 'var(--fg-tertiary)', marginTop: 10, fontSize: '.75rem' }}>
-                Set <code>MONGODB_URI</code> to manage real accounts from the admin dashboard.
-              </p>
-            </div>
-          ) : null}
         </div>
       </div>
     </section>

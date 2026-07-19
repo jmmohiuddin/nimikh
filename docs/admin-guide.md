@@ -173,10 +173,11 @@ role and password (scrypt-hashed). Suspended users can't sign in. Assigning the
 `agent` role makes the account appear under Admin → **Agents**; assigning
 `creator` gives it a creator dashboard.
 
-**Demo mode.** With no `MONGODB_URI`, the login page shows three built-in demo
-accounts (admin/creator/agent) so the whole system is explorable before Atlas is
-connected. The moment a database with real users exists, demo login is disabled.
-See ADR-08…10 in `docs/architecture-decisions.md`.
+**Demo mode.** With no `MONGODB_URI`, four built-in demo accounts
+(admin/creator/agent/client) make the whole system explorable before Atlas is
+connected. Their credentials are documented in the README only — never shown
+in the UI. The moment a database with real users exists, demo login is
+disabled. See ADR-08…10 in `docs/architecture-decisions.md`.
 
 ---
 

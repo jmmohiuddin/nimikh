@@ -8,8 +8,6 @@ import { site } from '@/lib/site';
 type NavProps = {
   ctaHref?: string;
   ctaLabel?: string;
-  secondaryHref?: string;
-  secondaryLabel?: string;
 };
 
 /**
@@ -22,8 +20,6 @@ type NavProps = {
 export function SiteNav({
   ctaHref = '/contact',
   ctaLabel = 'Get Started',
-  secondaryHref = '/marketplace',
-  secondaryLabel = 'Browse Creators',
 }: NavProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -48,9 +44,10 @@ export function SiteNav({
     setOpen(false);
   }, [pathname]);
 
-  // Admin has its own sticky bar; don't stack two. Guard placed AFTER all
-  // hooks to keep hook order stable across pathname changes.
-  if (pathname.startsWith('/admin')) return null;
+  // Authenticated dashboards (admin/creator/agent) have their own chrome;
+  // don't stack two nav bars. Guard placed AFTER all hooks to keep hook
+  // order stable across pathname changes.
+  if (/^\/(admin|creator|agent)(\/|$)/.test(pathname)) return null;
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -78,8 +75,8 @@ export function SiteNav({
             ))}
           </ul>
           <div className="nav-actions">
-            <Link href={secondaryHref} className="btn btn-ghost btn-sm btn-nav-hide">
-              {secondaryLabel}
+            <Link href="/login" className="btn btn-ghost btn-sm btn-nav-hide">
+              Sign in
             </Link>
             <Link href={ctaHref} className="btn btn-primary btn-sm">
               {ctaLabel}

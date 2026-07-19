@@ -62,4 +62,7 @@ export const COLLECTIONS = {
   feedback: 'feedback',
   clients: 'clients',
   creators: 'creators',
+  users: 'users',
+  agentLeads: 'agentLeads',
+  payments: 'payments',
 } as const;

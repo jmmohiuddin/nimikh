@@ -145,3 +145,35 @@ the repo. That's intentional — see [ADR-04](./architecture-decisions.md).
 
 For anything else, check `docs/architecture-decisions.md` — every non-obvious
 design choice has a rationale and a "tripwire" for when to revisit it.
+
+---
+
+## 7. Roles & the unified login (`/login`)
+
+The site now has a **Sign in** button in the header. It leads to `/login`, a
+single email + password form for all three internal roles. After sign-in the
+system reads the account's role and redirects automatically:
+
+| Role | Lands on | Can do |
+|---|---|---|
+| **Admin** | `/admin` | Everything: users (create/edit/suspend/delete/assign role), creators, agents, clients, all payments (+ CSV export), platform analytics |
+| **Creator** | `/creator` | Only their own: earnings, payment history, portfolio content (add/delete), personal analytics |
+| **Agent** | `/agent` | Only their own: assigned leads (call log, stage, follow-ups), commissions (25% of each conversion), performance |
+
+The public marketing site stays fully open — logging in is optional and only
+matters for these internal users.
+
+**Env vars.** Role sessions are signed with the same `ADMIN_SESSION_SECRET` used
+by the legacy `/admin` password login (rotating it logs everyone out). No new
+env var is required. The legacy `/admin/login` password entry still works and
+also grants admin.
+
+**Managing accounts.** Admin → **Users** → *New user* creates an account with a
+role and password (scrypt-hashed). Suspended users can't sign in. Assigning the
+`agent` role makes the account appear under Admin → **Agents**; assigning
+`creator` gives it a creator dashboard.
+
+**Demo mode.** With no `MONGODB_URI`, the login page shows three built-in demo
+accounts (admin/creator/agent) so the whole system is explorable before Atlas is
+connected. The moment a database with real users exists, demo login is disabled.
+See ADR-08…10 in `docs/architecture-decisions.md`.

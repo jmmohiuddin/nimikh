@@ -17,7 +17,7 @@ import { demoUsers } from '@/content/demo-users';
  * server-component props) deliberately omits `passwordHash`.
  */
 
-export const ROLES = ['admin', 'creator', 'agent'] as const;
+export const ROLES = ['admin', 'creator', 'agent', 'client'] as const;
 export type Role = (typeof ROLES)[number];
 
 export const USER_STATUS = ['active', 'suspended'] as const;
@@ -27,6 +27,7 @@ export const ROLE_HOME: Record<Role, string> = {
   admin: '/admin',
   creator: '/creator',
   agent: '/agent',
+  client: '/client',
 };
 
 /** Create/update payload. Password is optional on update. */
@@ -208,7 +209,7 @@ export async function listUsers(opts: { role?: Role; status?: UserStatus; limit?
 }
 
 export async function countUsersByRole(): Promise<Record<Role | 'total' | 'suspended', number>> {
-  const base: Record<Role | 'total' | 'suspended', number> = { admin: 0, creator: 0, agent: 0, total: 0, suspended: 0 };
+  const base: Record<Role | 'total' | 'suspended', number> = { admin: 0, creator: 0, agent: 0, client: 0, total: 0, suspended: 0 };
   const col = await requireCol();
   if (!col) {
     for (const u of demoUsers) {

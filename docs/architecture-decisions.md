@@ -193,3 +193,36 @@ database the moment one is provisioned. Revenue-split rates (agent commission
 
 **Tripwire.** The demo plaintext passwords are gated to the no-DB path only; a
 real DB with any users disables demo login. Never ship demo creds as real ones.
+
+---
+
+## ADR-11 — Client Portal role and installment engine (extends ADR-08/09)
+
+**Decision.** Add a fourth role `client` (home `/client`) and a dedicated
+client portal: projects, a flexible installment engine, documents, messages,
+and notifications. Installments are a **separate** model from the
+creator/agent revenue-split ledger (`lib/payments.ts`) — different lifecycle,
+different party, different reporting — linked by `projectId`/`clientId`, not
+merged into it.
+
+**Why.** The revenue ledger records what Nimikh pays out (creator payouts,
+agent commissions); installments record what clients owe Nimikh over time.
+Forcing both into one collection would tangle two unrelated financial flows.
+Clean relationships instead: `User(client) 1—* Project 1—* Installment`,
+with documents/messages/notifications scoped by project + client.
+
+**Flexible plans, no hardcoding.** `generatePlan()` takes count, total, first
+due date, and cadence as parameters, so 3/6/12/custom plans are all the same
+code path. Split rounding lands on the final installment. Each installment is
+its own invoice/receipt (invoiceNumber + printable HTML route) and carries an
+embedded `history[]` audit trail; `listRecentFinanceActivity()` flattens those
+for the admin finance dashboard.
+
+**Security.** Every client query is scoped to `session.uid`; the invoice route
+and per-project pages verify the record's `clientId` matches the session (admins
+may view any). A client can never address another client's data by id.
+
+**Tripwire.** When real payment gateways land (bKash/Nagad/Stripe webhooks),
+`markInstallmentPaid` becomes the webhook's target and the demo ledger retires.
+If invoices need legal/PDF fidelity, swap the HTML route for a PDF service —
+the model and links don't change.

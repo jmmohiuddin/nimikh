@@ -15,7 +15,7 @@ import { breadcrumbList, graph } from '@/lib/schema';
  */
 export function Breadcrumbs() {
   const pathname = usePathname();
-  if (/^\/(admin|creator|agent|login)(\/|$)/.test(pathname)) return null;
+  if (/^\/(admin|creator|agent|client|login)(\/|$)/.test(pathname)) return null;
   const crumbs = deriveBreadcrumbs(pathname);
   if (crumbs.length === 0) return null;
 

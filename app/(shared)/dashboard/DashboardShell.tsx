@@ -8,7 +8,7 @@ export type NavItem = { href: string; label: string; icon: string };
 export type NavGroup = { section?: string; items: NavItem[] };
 
 type Props = {
-  role: 'admin' | 'creator' | 'agent';
+  role: 'admin' | 'creator' | 'agent' | 'client';
   userName: string;
   groups: NavGroup[];
   children: React.ReactNode;

@@ -19,7 +19,13 @@ const nav: NavGroup[] = [
     { href: '/admin/agents', label: 'Agents', icon: '☎' },
     { href: '/admin/clients', label: 'Clients', icon: '🏢' },
   ] },
-  { section: 'Revenue', items: [{ href: '/admin/payments', label: 'Payments', icon: '৳' }] },
+  { section: 'Delivery', items: [
+    { href: '/admin/projects', label: 'Projects', icon: '🗂' },
+  ] },
+  { section: 'Revenue', items: [
+    { href: '/admin/finance', label: 'Finance', icon: '📊' },
+    { href: '/admin/payments', label: 'Payments', icon: '৳' },
+  ] },
   { section: 'Inbox', items: [
     { href: '/admin/leads', label: 'Leads', icon: '✉' },
     { href: '/admin/feedback', label: 'Feedback', icon: '💬' },

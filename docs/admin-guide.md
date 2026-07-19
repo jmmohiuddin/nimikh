@@ -177,3 +177,33 @@ role and password (scrypt-hashed). Suspended users can't sign in. Assigning the
 accounts (admin/creator/agent) so the whole system is explorable before Atlas is
 connected. The moment a database with real users exists, demo login is disabled.
 See ADR-08…10 in `docs/architecture-decisions.md`.
+
+---
+
+## 8. Client Portal & projects
+
+A fourth role, **client**, gives customers a private portal at `/client` to
+track their projects and installment payments. Clients only ever see their own
+data.
+
+**Set up a client (admin):**
+1. Admin → **Users → New user**, role = `client` — this is their login.
+2. Admin → **Projects → New project**, pick that client, set value/dates/team.
+3. Open the project → **Define payment plan** (e.g. 6 installments, monthly).
+   This generates the schedule with invoice numbers.
+4. As money arrives, **Record payment** on each installment (method + reference
+   + date). This flips it to Paid, exposes a receipt, and notifies the client.
+
+**What the client sees:** a dashboard (project status, % complete, total /
+paid / remaining, next due), an installment schedule (paid / overdue / upcoming
+with a progress bar), payment history with downloadable invoices & receipts, a
+stage timeline, versioned documents, a per-project message thread, and
+notifications. Invoices/receipts are printable HTML — "Print → Save as PDF".
+
+**Financial dashboard:** Admin → **Finance** shows contracted revenue, received,
+outstanding, upcoming (30-day), overdue, monthly cash flow, per-client payment
+trends, collection rate, and a financial audit trail. See ADR-11.
+
+**Demo mode:** with no `MONGODB_URI`, a demo client (`client@nimikh.com` /
+`client1234`) with two projects, a live installment plan, documents, messages,
+and notifications lets you explore the whole portal.

@@ -51,6 +51,14 @@ export const demoUsers: DemoUser[] = [
     name: 'Rafiq Hasan',
     status: 'active',
   },
+  {
+    id: 'demo-client',
+    email: 'client@nimikh.com',
+    password: 'client1234',
+    role: 'client',
+    name: 'Imran Chowdhury',
+    status: 'active',
+  },
 ];
 
 /** Shown on the login page when running without a database. */

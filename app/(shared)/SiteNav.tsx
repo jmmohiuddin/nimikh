@@ -47,7 +47,7 @@ export function SiteNav({
   // Authenticated dashboards (admin/creator/agent) have their own chrome;
   // don't stack two nav bars. Guard placed AFTER all hooks to keep hook
   // order stable across pathname changes.
-  if (/^\/(admin|creator|agent)(\/|$)/.test(pathname)) return null;
+  if (/^\/(admin|creator|agent|client)(\/|$)/.test(pathname)) return null;
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';

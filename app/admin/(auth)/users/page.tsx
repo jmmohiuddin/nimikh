@@ -20,7 +20,7 @@ async function deleteAction(formData: FormData) {
   revalidatePath('/admin/users');
 }
 
-const roleTone: Record<Role, 'indigo' | 'green' | 'amber'> = { admin: 'indigo', creator: 'green', agent: 'amber' };
+const roleTone: Record<Role, 'indigo' | 'green' | 'amber' | 'default'> = { admin: 'indigo', creator: 'green', agent: 'amber', client: 'default' };
 
 export default async function AdminUsersPage({ searchParams }: { searchParams: Promise<{ role?: string; q?: string }> }) {
   const q = await searchParams;

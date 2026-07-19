@@ -18,7 +18,7 @@ import { site } from '@/lib/site';
  */
 export function SiteFooter() {
   const pathname = usePathname();
-  if (/^\/(admin|creator|agent)(\/|$)/.test(pathname)) return null;
+  if (/^\/(admin|creator|agent|client)(\/|$)/.test(pathname)) return null;
   return (
     <footer className="footer">
       <div className="container">

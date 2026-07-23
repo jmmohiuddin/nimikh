@@ -32,6 +32,67 @@ Digital growth agency website — software development, growth marketing, and a 
 
 Machine-readable surfaces: `/robots.txt`, `/sitemap.xml` (+ split sitemaps), `/llms.txt`, `/api/knowledge`, `/.well-known/security.txt`.
 
+## Authentication & role-based dashboards
+
+The public site needs no login. Internal users sign in at **`/login`** (the
+**Sign in** button in the header) with email + password; the system reads the
+account's role and redirects to the matching dashboard:
+
+| Role | Dashboard | What they can do |
+|---|---|---|
+| **Admin** | `/admin` | Everything: users, creators, agents, clients, projects, payments, finance, leads, feedback |
+| **Creator** | `/creator` | Own earnings, portfolio content, analytics |
+| **Agent** | `/agent` | Assigned sales leads, call log, commissions (25% per conversion), performance |
+| **Client** | `/client` | Own projects, installment plan, payment history, invoices/receipts, documents, messages, notifications |
+
+Sessions are HMAC-signed cookies (8-hour lifetime). Passwords are stored as
+scrypt hashes. Each role only ever sees its own data — cross-role access
+redirects away, and clients can never reach another client's records.
+
+### Demo accounts (no database required)
+
+When `MONGODB_URI` is **not** set, the app runs in **demo mode**: four
+built-in accounts exist so every dashboard is explorable out of the box, and
+all data (payments, leads, projects, installments…) is realistic sample data.
+These credentials are deliberately **not shown anywhere in the UI** — they
+live only here and in `content/demo-users.ts`:
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | `admin@nimikh.com` | `admin1234` |
+| Creator | `creator@nimikh.com` | `creator1234` |
+| Agent | `agent@nimikh.com` | `agent1234` |
+| Client | `client@nimikh.com` | `client1234` |
+
+Demo accounts are **automatically disabled** the moment a real database with
+at least one real user exists — they are a pre-provisioning convenience, not
+a backdoor. Do not rely on them for anything real.
+
+### Environment variables
+
+| Variable | Required? | Purpose |
+|---|---|---|
+| `MONGODB_URI` | For real data | MongoDB Atlas connection string. Without it: demo mode (sample data, demo logins, nothing persisted). |
+| `MONGODB_DB` | Optional | Database name (default `nimikh`). |
+| `ADMIN_SESSION_SECRET` | **Required once `MONGODB_URI` is set** | 32+ random chars (`openssl rand -hex 32`). Signs all session cookies; rotating it logs everyone out. In demo mode (no DB) a built-in key is used so the deployed site works with zero configuration — safe only because demo accounts are public anyway. |
+| `ADMIN_PASSWORD` | Optional (legacy) | Enables the older password-only `/admin/login` entry. |
+
+Set these in Vercel → Project → Settings → Environment Variables, then redeploy.
+
+### Going live with real accounts
+
+1. Create a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster and set
+   `MONGODB_URI` + `ADMIN_SESSION_SECRET` in Vercel; redeploy.
+2. While the users collection is still empty, demo login continues to work —
+   sign in as the demo admin.
+3. Go to **Admin → Users → New user** and create your real admin account
+   (role `admin`, a strong password).
+4. From that moment demo logins are dead; sign in with your real account and
+   create creators, agents, and clients the same way.
+
+Full operator walkthrough: [`docs/admin-guide.md`](docs/admin-guide.md).
+Design rationale: ADR-08…11 in [`docs/architecture-decisions.md`](docs/architecture-decisions.md).
+
 ## Development
 
 ```bash

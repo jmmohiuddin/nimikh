@@ -136,3 +136,93 @@ faster than 8 sequential PR round-trips.
 
 **Tripwire.** If any commit introduces a runtime dep with license or security
 implications (MongoDB driver counts as neither — it's Apache-2.0), split it out.
+
+---
+
+## ADR-08 — Role-based auth (admin / creator / agent) extends the single-admin session
+
+**Decision.** Introduce a `users` collection (email + scrypt-hashed password,
+role, status) and a role-bearing signed session cookie (`lib/auth.ts`) that
+carries `{uid, role, name, email, exp}`. Reuse the exact HMAC + timing-safe
+pattern from the single-admin session (ADR-03) rather than adding Firebase /
+Auth.js. The legacy `/admin/login` password flow keeps working — the admin gate
+now accepts EITHER the new admin session OR the legacy cookie.
+
+**Why.** ADR-03 deferred multi-user auth until "there's a second kind of user."
+This request is exactly that: three roles, each with a tailored dashboard.
+scrypt ships with Node (no native bcrypt build, no new dependency), the signed
+cookie needs no session store, and reusing the established crypto keeps the
+security surface small and reviewed. A hosted IdP would be heavier than the
+brief warrants for three internal roles.
+
+**Tripwire.** Move to Auth.js + an adapter when we need OAuth/social login,
+per-permission (not per-role) authorization, or password-reset email flows.
+
+---
+
+## ADR-09 — Creator & agent dashboards live in THIS repo (revises ADR-01)
+
+**Decision.** Build the admin, creator, and agent dashboards here, gated by the
+new session and rendered server-side under `/admin`, `/creator`, `/agent`.
+
+**Why.** ADR-01 excluded "creators logging in to their own dashboard" to protect
+the marketing site's performance budget. That holds for a heavy customer-facing
+marketplace runtime — but these are low-traffic, server-rendered internal
+dashboards behind an auth gate and `robots: noindex`. They ship zero extra JS to
+public pages (the public site's suppression of dashboard chrome is unchanged),
+so the LCP/CLS budget is untouched. Splitting three internal dashboards into a
+separate repo/runtime would be premature.
+
+**Tripwire.** Split into `nimikh-platform` once dashboards need real-time
+features, heavy client bundles, or a separate deploy/on-call rotation.
+
+---
+
+## ADR-10 — Demo-user + demo-ledger fallback, mirroring the marketplace seed
+
+**Decision.** When `MONGODB_URI` is unset, `authenticate()` and every dashboard
+query fall back to demo users (`content/demo-users.ts`) and a deterministic demo
+ledger/pipeline (in `lib/payments.ts`, `lib/agentLeads.ts`). The login page
+surfaces the demo credentials in this mode.
+
+**Why.** This is the same "never-empty, works-pre-Atlas" philosophy as the
+marketplace seed (ADR-04) and log-only mode (ADR-02). It makes the entire
+role-based product demonstrable out of the box, then cleanly hands over to the
+database the moment one is provisioned. Revenue-split rates (agent commission
+25%, creator 65%) are named constants in `lib/payments.ts`, not magic numbers.
+
+**Tripwire.** The demo plaintext passwords are gated to the no-DB path only; a
+real DB with any users disables demo login. Never ship demo creds as real ones.
+
+---
+
+## ADR-11 — Client Portal role and installment engine (extends ADR-08/09)
+
+**Decision.** Add a fourth role `client` (home `/client`) and a dedicated
+client portal: projects, a flexible installment engine, documents, messages,
+and notifications. Installments are a **separate** model from the
+creator/agent revenue-split ledger (`lib/payments.ts`) — different lifecycle,
+different party, different reporting — linked by `projectId`/`clientId`, not
+merged into it.
+
+**Why.** The revenue ledger records what Nimikh pays out (creator payouts,
+agent commissions); installments record what clients owe Nimikh over time.
+Forcing both into one collection would tangle two unrelated financial flows.
+Clean relationships instead: `User(client) 1—* Project 1—* Installment`,
+with documents/messages/notifications scoped by project + client.
+
+**Flexible plans, no hardcoding.** `generatePlan()` takes count, total, first
+due date, and cadence as parameters, so 3/6/12/custom plans are all the same
+code path. Split rounding lands on the final installment. Each installment is
+its own invoice/receipt (invoiceNumber + printable HTML route) and carries an
+embedded `history[]` audit trail; `listRecentFinanceActivity()` flattens those
+for the admin finance dashboard.
+
+**Security.** Every client query is scoped to `session.uid`; the invoice route
+and per-project pages verify the record's `clientId` matches the session (admins
+may view any). A client can never address another client's data by id.
+
+**Tripwire.** When real payment gateways land (bKash/Nagad/Stripe webhooks),
+`markInstallmentPaid` becomes the webhook's target and the demo ledger retires.
+If invoices need legal/PDF fidelity, swap the HTML route for a PDF service —
+the model and links don't change.
